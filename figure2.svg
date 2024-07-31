@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    width="2200" height="1700" version="1.1">
+
+  <style>
+    .black-fill {
+      stroke: black;
+      fill: black;
+    }
+    .line {
+      fill: none;
+    }
+    .staff-line {
+      stroke-width: 1.5;
+    }
+    .measure-line {
+      stroke-width: 2;
+    }
+    .dashed-line {
+      stroke-dasharray: 10, 10;
+    }
+    .cross {
+      stroke-width: 3;
+    }
+    .bold-text {
+      font-family: "Times New Roman";
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .hidden {
+      display: none;
+    }
+
+  </style>
+
+  <text x="795" y="155" class="black-fill bold-text">
+    Figure 2, "The Augurs of Spring", mm. 89-98
+  </text>
+
+  <!-- Grouping lines together -->
+  <g class="black-fill line">
+    <!-- vertical lines -->
+    <g class="measure-line">
+      <polyline points="555,370 555,1380"/>
+    </g>
+    <!-- horizontal lines -->
+    <g class="staff-line" id="svgRoot">
+      <!-- Dynamic lines will be added here -->
+    </g>
+
+    <!-- <path d="M292,1165 L308,1185 M292,1185 L308,1165" class="cross"/> -->
+
+  </g>
+  
+  <script type="text/ecmascript" xlink:href="script.js"></script>
+
+</svg>
