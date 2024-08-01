@@ -23,11 +23,11 @@ class SVGSystemManager {
     createXs(xAttributes) {
         const xStart = 300;
         const yStart = 855;
-        for (let i = 0; i < xAttributes.length; i++) {
-            const x = xStart + (xAttributes[i][0] - 1) * 65; // Calculate x based on the attribute
-            const y = yStart + (xAttributes[i][1] - 1) * 40; // Calculate y based on the attribute
+        xAttributes.forEach(([xOffset, yOffset]) => {
+            const x = xStart + (xOffset - 1) * 65; // Calculate x based on the attribute
+            const y = yStart + (yOffset - 1) * 40; // Calculate y based on the attribute
             this.createX(x, y); // Use 'this.' to refer to another method in the same class
-        }
+        });        
     }
     
 
@@ -75,9 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
     systemManager.createPolylines(855, 290, 12, [
         ["", 6],
         ["dashed-line", 11],
-        ["hidden", 4],
+        ["", 4],
         ["", 9], // Add more tuples as needed for each line
-        ["", 2],
+        ["dashed-line", 2],
         ["", 7],
         ["", 0],
         ["", 5],
@@ -92,7 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
         [1,9],
         [1,10],
         [1,12],
-        [2, 3]
+        [2, 3],
+        [2,5]
     ]);
     
 });
