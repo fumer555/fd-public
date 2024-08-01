@@ -40,8 +40,8 @@ class CrossShapeStrategy {
 class GrayAreaStrategy {
     constructor(factory) {
         this.factory = factory;
-        this.horizontalExpansion = 12;
-        this.verticalExpansion = 24;
+        this.horizontalExpansion = 18;
+        this.verticalExpansion = 28;
     }
 
     create(x, headY, endY) {

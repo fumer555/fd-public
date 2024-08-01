@@ -38,8 +38,7 @@
 
   <!-- order of layer -->
     <!-- gray out  -->
-    <g id="grayRoot">
-    </g>
+    <g id="grayRoot" />
 
     <!-- <rect x="280" y="1175" width="80" height="180" fill="#cccccc" rx="40" ry="40" /> -->
     <!-- the rest  -->
@@ -57,13 +56,8 @@
     </g>
     <!-- horizontal lines -->
     <g id="svgRoot">
-    <!-- <g class="staff-line" id="svgRoot"> -->
       <!-- Dynamic lines will be added here -->
     </g>
-
-    <!-- <path d="M292,1165 L308,1185 M292,1185 L308,1165" class="cross"/> -->
-
-  <!-- <rect x="280" y="1175" width="80" height="180" fill="#cccccc" rx="40" ry="40" opacity="0.5"/> -->
   </g>
   
   <script type="text/ecmascript" xlink:href="script.js"></script>
