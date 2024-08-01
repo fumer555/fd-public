@@ -12,17 +12,57 @@ class SVGElementFactory {
     }
 }
 
+class LineStrategy {
+    constructor(factory, lineMode) {
+        this.factory = factory;
+    }
+
+    create(x1, y1, x2, y2, lineID, className = '') {
+        return this.factory.createElement("polyline", {
+            points: `${x1},${y1} ${x2},${y2}`,
+            id: lineID,
+            class: className
+        });
+    }
+}
+
+class TextStrategy {
+    constructor(factory) {
+        this.factory = factory;
+        this.fontFamily = "Times New Roman";
+        this.fontSize = 24;
+        this.textClass = "black-fill";
+        this.dominantBaseline = "middle";
+
+    }
+
+    create(x, y, textContent) {
+        let text = this.factory.createElement("text", {
+            x: x,
+            y: y,
+            "font-family": this.fontFamily,
+            "font-size": this.fontSize,
+            "dominant-baseline": this.dominantBaseline,
+            class: this.textClass
+        });
+        text.textContent = textContent;
+        return text;
+    }
+}
+
 class CrossShapeStrategy {
     constructor(factory) {
         this.factory = factory;
+        this.xExpansion = 8;
+        this.yExpansion = 10;
     }
 
     create(x, y) {
         // Coordinates for the cross's horizontal and vertical arms
-        let leftX = x - 8;
-        let rightX = x + 8;
-        let topY = y - 10;
-        let bottomY = y + 10;
+        let leftX = x - this.xExpansion;
+        let rightX = x + this.xExpansion;
+        let topY = y - this.yExpansion;
+        let bottomY = y + this.yExpansion;
     
         // Path data using SVG's path syntax for drawing a cross
         // 'M' moves to a point, 'L' draws a line to a point
@@ -61,15 +101,6 @@ class GrayAreaStrategy {
             rx: this.horizontalExpansion,
             ry: this.horizontalExpansion
         });
-        // return this.factory.createElement("rect", {
-        //     x: 280,
-        //     y: 1175,
-        //     width: 80,
-        //     height: 180,
-        //     fill: "#cccccc",
-        //     rx: 40,
-        //     ry: 40
-        // });
     }    
 }
 
@@ -77,11 +108,15 @@ class PolylineStrategy {
     constructor(factory) {
         this.factory = factory;
         this.defaultClassNames = "staff-line";
+        this.leftX = 265;
+        // this.leftY = 855;
+        // this.incrementX = 290;
+        // this.numberLines = 12;
     }
 
     create(id, y, incrementX, className, textContent) {
         let polyline = this.factory.createElement("polyline", {
-            points: `265,${y} ${265 + incrementX},${y}`,
+            points: `${this.leftX},${y} ${this.leftX + incrementX},${y}`,
             id: `line-${id}`,
             class: `${this.defaultClassNames} ${className}`
         });
@@ -111,6 +146,9 @@ class SVGSystemManager {
         this.polylineStrategy = new PolylineStrategy(this.factory);
         this.grayAreaStrategy = new GrayAreaStrategy(this.factory);
 
+        // other attributes to be redefined
+        this.stafflineIncrementX = 290;
+
         this.idMap = {};
         tones.forEach((item, index) => {
             this.idMap[item] = index + 1;
@@ -120,6 +158,14 @@ class SVGSystemManager {
     createX(x, y) {
         let cross = this.crossShapeStrategy.create(x, y);
         this.svgRoot.appendChild(cross);
+    }
+
+    overFlow() {
+        pass;
+    }
+
+    underFlow() {
+        pass;
     }
 
     createXs(xAttributes) { //going from symbolic to numerical
@@ -132,12 +178,14 @@ class SVGSystemManager {
         });
     }
 
-    createPolylines(startY, incrementX, numLines, lineAttributes) {
+    createPolylines(startY, lineAttributes) {
         let y = startY;
+        let gap = 40;
+        let numLines = lineAttributes.length;
         for (let i = 0; i < numLines; i++) {
             let attributes = lineAttributes[i];
             let { polyline, text } = this.polylineStrategy.create(
-                i, y, incrementX, attributes[0] || '', attributes[1] !== undefined ? attributes[1] : ''
+                i, y, this.stafflineIncrementX, attributes[0] || '', attributes[1] !== undefined ? attributes[1] : ''
             );
 
             this.svgRoot.appendChild(polyline);
@@ -145,7 +193,7 @@ class SVGSystemManager {
                 this.svgRoot.appendChild(text);
             }
 
-            y += 40;
+            y += gap;
         }
     }
 
@@ -167,7 +215,7 @@ class SVGSystemManager {
 // Using the class
 document.addEventListener("DOMContentLoaded", () => {
     const systemManager = new SVGSystemManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
-    systemManager.createPolylines(855, 290, 12, [
+    systemManager.createPolylines(855, [
         ["", 6],
         ["dashed-line", 11],
         ["", 4],
