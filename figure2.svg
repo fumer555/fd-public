@@ -45,7 +45,8 @@
       <polyline points="555,370 555,1380"/>
     </g>
     <!-- horizontal lines -->
-    <g class="staff-line" id="svgRoot">
+    <g id="svgRoot">
+    <!-- <g class="staff-line" id="svgRoot"> -->
       <!-- Dynamic lines will be added here -->
     </g>
 
