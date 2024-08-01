@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="SVG System Manager UML">
+    <mxGraphModel dx="1677" dy="1042" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="SVGSystemManager" style="swimlane;html=1;whiteSpace=wrap;container=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="180" width="200" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="" style="part=1;html=1;whiteSpace=wrap;container=1;" vertex="1" connectable="0" parent="2">
+          <mxGeometry y="26" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="- svgNS: string&#xa;- svgRoot: HTMLElement&#xa;- factory: SVGElementFactory&#xa;- crossShapeStrategy: CrossShapeStrategy&#xa;- polylineStrategy: PolylineStrategy&#xa;- idMap: Object" style="text;html=1;whiteSpace=wrap;" vertex="1" connectable="0" parent="3">
+          <mxGeometry width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="" style="part=1;html=1;whiteSpace=wrap;container=1;" vertex="1" connectable="0" parent="2">
+          <mxGeometry y="126" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="+ createX(x: number, y: number): void&#xa;+ createXs(xAttributes: Array&lt;[number, number]&gt;): void&#xa;+ createPolylines(startY: number, incrementX: number, numLines: number, lineAttributes: Array&lt;[string, any]&gt;): void&#xa;+ changeClass(lineId: string, newClass: string): void" style="text;html=1;whiteSpace=wrap;" vertex="1" connectable="0" parent="5">
+          <mxGeometry width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="SVGElementFactory" style="swimlane;html=1;whiteSpace=wrap;container=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="180" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="" style="part=1;html=1;whiteSpace=wrap;container=1;" vertex="1" connectable="0" parent="7">
+          <mxGeometry y="26" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="- svgNS: string" style="text;html=1;whiteSpace=wrap;" vertex="1" connectable="0" parent="8">
+          <mxGeometry width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="" style="part=1;html=1;whiteSpace=wrap;container=1;" vertex="1" connectable="0" parent="7">
+          <mxGeometry y="66" width="200" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="+ createElement(type: string, attributes: Object): SVGElement" style="text;html=1;whiteSpace=wrap;" vertex="1" connectable="0" parent="10">
+          <mxGeometry width="200" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="CrossShapeStrategy" style="swimlane;html=1;whiteSpace=wrap;container=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="450" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="" style="part=1;html=1;whiteSpace=wrap;container=1;" vertex="1" connectable="0" parent="12">
+          <mxGeometry y="26" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="- factory: SVGElementFactory" style="text;html=1;whiteSpace=wrap;" vertex="1" connectable="0" parent="13">
+          <mxGeometry width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="" style="part=1;html=1;whiteSpace=wrap;container=1;" vertex="1" connectable="0" parent="12">
+          <mxGeometry y="66" width="200" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="+ create(x: number, y: number): SVGElement" style="text;html=1;whiteSpace=wrap;" vertex="1" connectable="0" parent="15">
+          <mxGeometry width="200" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="PolylineStrategy" style="swimlane;html=1;whiteSpace=wrap;container=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="450" width="200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="" style="part=1;html=1;whiteSpace=wrap;container=1;" vertex="1" connectable="0" parent="17">
+          <mxGeometry y="26" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="- factory: SVGElementFactory" style="text;html=1;whiteSpace=wrap;" vertex="1" connectable="0" parent="18">
+          <mxGeometry width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="" style="part=1;html=1;whiteSpace=wrap;container=1;" vertex="1" connectable="0" parent="17">
+          <mxGeometry y="66" width="200" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="+ create(id: number, y: number, incrementX: number, className: string, textContent: string): { polyline: SVGElement, text: SVGElement }" style="text;html=1;whiteSpace=wrap;" vertex="1" connectable="0" parent="20">
+          <mxGeometry width="200" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="12" target="7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="17" target="7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
