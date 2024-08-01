@@ -1,0 +1,27 @@
+.black-fill {
+    stroke: black;
+    fill: black;
+  }
+  .line {
+    fill: none;
+  }
+  .staff-line {
+    stroke-width: 1.5;
+  }
+  .measure-line {
+    stroke-width: 2;
+  }
+  .dashed-line {
+    stroke-dasharray: 10, 10;
+  }
+  .cross {
+    stroke-width: 3;
+  }
+  .bold-text {
+    font-family: "Times New Roman";
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .hidden {
+    display: none;
+  }

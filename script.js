@@ -37,6 +37,42 @@ class CrossShapeStrategy {
     }    
 }
 
+class GrayAreaStrategy {
+    constructor(factory) {
+        this.factory = factory;
+        this.horizontalExpansion = 12;
+        this.verticalExpansion = 24;
+    }
+
+    create(x, headY, endY) {
+
+        let cornerX = x - this.horizontalExpansion;
+        let cornerY = headY - this.verticalExpansion;
+        let horizontalWidth = this.horizontalExpansion * 2;
+        let verticalHeight = endY - headY + this.verticalExpansion * 2;
+
+        // <rect x="280" y="1175" width="80" height="180" fill="#cccccc" rx="40" ry="40" />
+        return this.factory.createElement("rect", {
+            x: cornerX,
+            y: cornerY,
+            width: horizontalWidth,
+            height: verticalHeight,
+            fill: "#cccccc",
+            rx: this.horizontalExpansion,
+            ry: this.horizontalExpansion
+        });
+        // return this.factory.createElement("rect", {
+        //     x: 280,
+        //     y: 1175,
+        //     width: 80,
+        //     height: 180,
+        //     fill: "#cccccc",
+        //     rx: 40,
+        //     ry: 40
+        // });
+    }    
+}
+
 class PolylineStrategy {
     constructor(factory) {
         this.factory = factory;
@@ -68,9 +104,13 @@ class SVGSystemManager {
     constructor(svgRootId, tones) {
         this.svgNS = "http://www.w3.org/2000/svg";
         this.svgRoot = document.getElementById(svgRootId);
+        this.grayRoot = document.getElementById("grayRoot");
+        // using the 3 classes above 
         this.factory = new SVGElementFactory(this.svgNS);
         this.crossShapeStrategy = new CrossShapeStrategy(this.factory);
         this.polylineStrategy = new PolylineStrategy(this.factory);
+        this.grayAreaStrategy = new GrayAreaStrategy(this.factory);
+
         this.idMap = {};
         tones.forEach((item, index) => {
             this.idMap[item] = index + 1;
@@ -109,6 +149,13 @@ class SVGSystemManager {
         }
     }
 
+    // createGrayArea(locationX, locationY) {
+    createGrayArea() {
+        let grayArea = this.grayAreaStrategy.create(300, 1175, 1295);
+        this.grayRoot.appendChild(grayArea)
+        // pass;
+    }
+
     changeClass(lineId, newClass) {
         let line = document.getElementById(lineId);
         if (line) {
@@ -144,4 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
         [2, 7],
         [2, 8]
     ]);
+
+    systemManager.createGrayArea();
 });

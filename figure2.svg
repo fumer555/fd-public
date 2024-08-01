@@ -34,9 +34,20 @@
 
   </style>
 
-  <text x="795" y="155" class="black-fill bold-text">
-    Figure 2, "The Augurs of Spring", mm. 89-98
-  </text>
+
+
+  <!-- order of layer -->
+    <!-- gray out  -->
+    <g id="grayRoot">
+    </g>
+
+    <!-- <rect x="280" y="1175" width="80" height="180" fill="#cccccc" rx="40" ry="40" /> -->
+    <!-- the rest  -->
+    <text x="795" y="155" class="black-fill bold-text">
+      Figure 2, "The Augurs of Spring", mm. 89-98
+    </text>
+
+
 
   <!-- Grouping lines together -->
   <g class="black-fill line">
@@ -52,6 +63,7 @@
 
     <!-- <path d="M292,1165 L308,1185 M292,1185 L308,1165" class="cross"/> -->
 
+  <!-- <rect x="280" y="1175" width="80" height="180" fill="#cccccc" rx="40" ry="40" opacity="0.5"/> -->
   </g>
   
   <script type="text/ecmascript" xlink:href="script.js"></script>
