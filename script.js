@@ -122,7 +122,7 @@ class SVGSystemManager {
         this.svgRoot.appendChild(cross);
     }
 
-    createXs(xAttributes) {
+    createXs(xAttributes) { //going from symbolic to numerical
         const xStart = 300;
         const yStart = 855;
         xAttributes.forEach(([xOffset, yOffset]) => {
