@@ -109,6 +109,7 @@ class PolylineStrategy {
         this.factory = factory;
         this.defaultClassNames = "staff-line";
         this.leftX = 265;
+        this.textLeftShiftValue = 60;
         // this.leftY = 855;
         // this.incrementX = 290;
         // this.numberLines = 12;
@@ -122,7 +123,7 @@ class PolylineStrategy {
         });
 
         let text = this.factory.createElement("text", {
-            x: 265 - 60,
+            x: this.leftX - this.textLeftShiftValue,
             y: y,
             "font-family": "Times New Roman",
             "font-size": "24",
@@ -148,6 +149,8 @@ class SVGSystemManager {
 
         // other attributes to be redefined
         this.stafflineIncrementX = 290;
+        this.starXStart = 300;
+        this.starYStart = 855;
 
         this.idMap = {};
         tones.forEach((item, index) => {
@@ -155,7 +158,7 @@ class SVGSystemManager {
         });
     }
 
-    createX(x, y) {
+    createStar(x, y) {
         let cross = this.crossShapeStrategy.create(x, y);
         this.svgRoot.appendChild(cross);
     }
@@ -168,29 +171,37 @@ class SVGSystemManager {
         pass;
     }
 
-    createXs(xAttributes) { //going from symbolic to numerical
+    createXs(xAttributes) { //going from symbolic to numerical, this is pretty brutal, needs to be dynamic
         const xStart = 300;
         const yStart = 855;
         xAttributes.forEach(([xOffset, yOffset]) => {
             const x = xStart + (xOffset - 1) * 65;
             const y = yStart + (yOffset - 1) * 40;
-            this.createX(x, y);
+            this.createStar(x, y);
         });
     }
 
-    createPolylines(startY, lineAttributes) {
+    createMultipleStars(starAttributes){
+        pass;
+    }
+
+    symbolic2Coordinate(starAttributes){
+        pass;
+    }
+
+    createPolylines(lineAttributes, startY=855, includeNumber=false) {
         let y = startY;
         let gap = 40;
         let numLines = lineAttributes.length;
 
         for (let i = 0; i < numLines; i++) {
-            let [key, className, override] = lineAttributes[i];
+            let [key, className, override] = lineAttributes[i]; //override not used yet
             let { polyline, text } = this.polylineStrategy.create(
                 key, y, this.stafflineIncrementX, className, key
             );
 
             this.svgRoot.appendChild(polyline);
-            if (key !== undefined) {
+            if (includeNumber && key !== undefined) {
                 this.svgRoot.appendChild(text);
             }
 
@@ -198,10 +209,17 @@ class SVGSystemManager {
         }
     }
 
-    // createGrayArea(locationX, locationY) {
+    createGrayAreasByCoordiante(grayAreaAttributes) {
+        let numGrayAreas = grayAreaAttributes.length;
+        for (let i = 0; i < numGrayAreas; i++){
+            let [x, headY, endY] = grayAreaAttributes[i];
+            let grayArea = this.grayAreaStrategy.create(x, headY, endY);
+            this.grayRoot.appendChild(grayArea);
+        }
+    }
     createGrayArea() {
         let grayArea = this.grayAreaStrategy.create(300, 1175, 1295);
-        this.grayRoot.appendChild(grayArea)
+        this.grayRoot.appendChild(grayArea);
         // pass;
     }
 
@@ -213,10 +231,16 @@ class SVGSystemManager {
     }
 }
 
+let globalSystemX = 300;
+let globalSystemY = 855;
+let globalBeatDistance = 65;
+let globalStarX = globalSystemX + globalBeatDistance;
+let globalStarY = globalSystemY;
+
 // Using the class
 document.addEventListener("DOMContentLoaded", () => {
     const systemManager = new SVGSystemManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
-    systemManager.createPolylines(855, [
+    systemManager.createPolylines([
         [6, "", false],
         [11, "dashed-line", false],
         [4, "", false],
@@ -228,8 +252,8 @@ document.addEventListener("DOMContentLoaded", () => {
         [10, "", false],
         [3, "", false],
         [8, "", false],
-        [1, "", false]
-    ]);
+        [1, "dotted-line", false]
+    ], 855, true);
 
     systemManager.createXs([
         [1, 9],
@@ -238,8 +262,20 @@ document.addEventListener("DOMContentLoaded", () => {
         [2, 3],
         [2, 5],
         [2, 7],
-        [2, 8]
+        [2, 8],
+        [3, 4],
+        [3, 6],
+        [4, 4],
+        [4, 6],
+        [4, 7],
+        [4, 8],
+        [4, 9],
+
     ]);
 
-    systemManager.createGrayArea();
+    // systemManager.createGrayArea();
+    systemManager.createGrayAreasByCoordiante([
+        [300, 1175, 1295],
+        [365, 855 + 40*2, 855 + 40*7]
+    ]);
 });

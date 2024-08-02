@@ -8,9 +8,9 @@
       stroke: black;
       fill: black;
     }
-    .line {
+    <!-- .line {
       fill: none;
-    }
+    } -->
     .staff-line {
       stroke-width: 1.5;
     }
@@ -19,6 +19,9 @@
     }
     .dashed-line {
       stroke-dasharray: 10, 10;
+    }
+    .dotted-line {
+      stroke-dasharray: 2, 2;
     }
     .cross {
       stroke-width: 3;
@@ -42,6 +45,8 @@
 
     <!-- <rect x="280" y="1175" width="80" height="180" fill="#cccccc" rx="40" ry="40" /> -->
     <!-- the rest  -->
+
+    <!-- title  -->
     <text x="795" y="155" class="black-fill bold-text">
       Figure 2, "The Augurs of Spring", mm. 89-98
     </text>
@@ -49,7 +54,7 @@
 
 
   <!-- Grouping lines together -->
-  <g class="black-fill line">
+  <g class="black-fill">
     <!-- vertical lines -->
     <g class="measure-line">
       <polyline points="555,370 555,1380"/>
