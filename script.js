@@ -182,14 +182,15 @@ class SVGSystemManager {
         let y = startY;
         let gap = 40;
         let numLines = lineAttributes.length;
+
         for (let i = 0; i < numLines; i++) {
-            let attributes = lineAttributes[i];
+            let [key, className, override] = lineAttributes[i];
             let { polyline, text } = this.polylineStrategy.create(
-                i, y, this.stafflineIncrementX, attributes[0] || '', attributes[1] !== undefined ? attributes[1] : ''
+                key, y, this.stafflineIncrementX, className, key
             );
 
             this.svgRoot.appendChild(polyline);
-            if (attributes[1] !== undefined) {
+            if (key !== undefined) {
                 this.svgRoot.appendChild(text);
             }
 
@@ -216,18 +217,18 @@ class SVGSystemManager {
 document.addEventListener("DOMContentLoaded", () => {
     const systemManager = new SVGSystemManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
     systemManager.createPolylines(855, [
-        ["", 6],
-        ["dashed-line", 11],
-        ["", 4],
-        ["", 9],
-        ["dashed-line", 2],
-        ["", 7],
-        ["", 0],
-        ["", 5],
-        ["", 10],
-        ["", 3],
-        ["", 8],
-        ["", 1]
+        [6, "", false],
+        [11, "dashed-line", false],
+        [4, "", false],
+        [9, "", false],
+        [2, "dashed-line", false],
+        [7, "", false],
+        [0, "", false],
+        [5, "", false],
+        [10, "", false],
+        [3, "", false],
+        [8, "", false],
+        [1, "", false]
     ]);
 
     systemManager.createXs([
