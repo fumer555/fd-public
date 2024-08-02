@@ -104,6 +104,37 @@ class GrayAreaStrategy {
     }    
 }
 
+class BraceShapeStrategy {
+    constructor(factory) {
+        this.factory = factory;
+        this.arcRadius = 25;
+        this.lineLength = 350;
+    }
+
+    create(x, y) {
+        // Coordinates for the brace's arcs and connecting line
+        let startX = x;
+        let startY = y;
+        let endX = x + this.arcRadius;
+        let endY = y + this.lineLength;
+
+        // Path data using SVG's path syntax for drawing a brace
+        let pathData = `M${startX},${startY} ` +
+                       `A${this.arcRadius},${this.arcRadius} 0 0 1 ${endX},${startY + this.arcRadius} ` +
+                       `L${endX},${startY + this.lineLength - this.arcRadius} ` +
+                       `A${this.arcRadius},${this.arcRadius} 0 0 1 ${startX},${endY}`;
+
+        // Creating the SVG path element with class 'brace'
+        return this.factory.createElement("path", {
+            d: pathData,
+            class: "brace",
+            fill: "none",
+            "stroke-width": 2
+        });
+    }
+}
+
+
 class PolylineStrategy {
     constructor(factory) {
         this.factory = factory;
@@ -146,6 +177,7 @@ class SVGSystemManager {
         this.crossShapeStrategy = new CrossShapeStrategy(this.factory);
         this.polylineStrategy = new PolylineStrategy(this.factory);
         this.grayAreaStrategy = new GrayAreaStrategy(this.factory);
+        this.braceShapeStrategy = new BraceShapeStrategy(this.factory);
 
         // other attributes to be redefined
         this.stafflineIncrementX = 290;
@@ -223,6 +255,11 @@ class SVGSystemManager {
         // pass;
     }
 
+    createBrace(x, y){
+        let brace = this.braceShapeStrategy.create(x, y);
+        this.svgRoot.appendChild(brace);
+    }
+
     changeClass(lineId, newClass) {
         let line = document.getElementById(lineId);
         if (line) {
@@ -276,6 +313,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // systemManager.createGrayArea();
     systemManager.createGrayAreasByCoordiante([
         [300, 1175, 1295],
-        [365, 855 + 40*2, 855 + 40*7]
+        [300 + 65, 855 + 40*2, 855 + 40*7],
+        [300 + 65 *2, 855 + 40*3, 855 + 40*5],
+        [300 + 65 *3, 855 + 40*3, 855 + 40*8]
     ]);
+
+    systemManager.createBrace(300 + 65 *3 + 15, 855 + 40*3 - 60);
 });

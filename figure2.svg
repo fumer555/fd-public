@@ -37,33 +37,36 @@
 
   </style>
 
+  <!-- test  -->
+  <!-- <path d="M 50 0 
+           A 25 25 0 0 1 75 25
+           L 75 275
+           A 25 25 0 0 1 50 300" 
+        fill="none" stroke="black" stroke-width="2"/> -->
 
+  <!-- <path d="M 50 0 
+           A 50 50 0 0 1 100 50" 
+        fill="none" stroke="black" stroke-width="2"/> -->
 
   <!-- order of layer -->
     <!-- gray out  -->
     <g id="grayRoot" />
 
-    <!-- <rect x="280" y="1175" width="80" height="180" fill="#cccccc" rx="40" ry="40" /> -->
-    <!-- the rest  -->
-
-    <!-- title  -->
-    <text x="795" y="155" class="black-fill bold-text">
-      Figure 2, "The Augurs of Spring", mm. 89-98
-    </text>
-
-
-
-  <!-- Grouping lines together -->
-  <g class="black-fill">
-    <!-- vertical lines -->
-    <g class="measure-line">
-      <polyline points="555,370 555,1380"/>
+    <!-- the rest - Black fill for lines to show up together -->
+    <g class="black-fill">
+      <!-- title  -->
+      <text x="1100" y="155" class="bold-text" text-anchor="middle">
+        Figure 2, "The Augurs of Spring", mm. 89-98
+      </text>
+      <!-- vertical lines -->
+      <g class="measure-line">
+        <polyline points="555,370 555,1380"/>
+      </g>
+      <!-- the big pop up from js -->
+      <g id="svgRoot"/>
     </g>
-    <!-- horizontal lines -->
-    <g id="svgRoot">
-      <!-- Dynamic lines will be added here -->
-    </g>
-  </g>
+
+
   
   <script type="text/ecmascript" xlink:href="script.js"></script>
 
