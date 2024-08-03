@@ -31,9 +31,10 @@ class TextStrategy {
         this.factory = factory;
         this.fontFamily = "Times New Roman";
         this.fontSize = 24;
+        this.fontWeight = "normal"; 
         this.textClass = "black-fill";
         this.dominantBaseline = "middle";
-
+        this.textAnchor = "start";
     }
 
     create(x, y, textContent) {
@@ -42,10 +43,19 @@ class TextStrategy {
             y: y,
             "font-family": this.fontFamily,
             "font-size": this.fontSize,
+            "font-weight": this.fontWeight,
             "dominant-baseline": this.dominantBaseline,
-            class: this.textClass
+            class: this.textClass,
+            "text-anchor": this.textAnchor
         });
         text.textContent = textContent;
+
+        // Adjust the y-coordinate for better vertical centering
+        if (this.textAnchor=="middle"){
+            const adjustment = this.fontSize * 0.1; // Adjust this value as needed
+            text.setAttribute("y", y + adjustment);
+        }
+
         return text;
     }
 }
@@ -319,4 +329,37 @@ document.addEventListener("DOMContentLoaded", () => {
     ]);
 
     systemManager.createBrace(300 + 65 *3 + 15, 855 + 40*3 - 60);
+
+    let outterFactory = new SVGElementFactory("http://www.w3.org/2000/svg");
+    const boxTextManager = new TextStrategy(outterFactory);
+    boxTextManager.fontWeight = "bold"; 
+    boxTextManager.textAnchor = "middle";
+    boxTextManager.fontSize = 30;
+    let measureText = boxTextManager.create(330,405,"25");
+    systemManager.svgRoot.appendChild(measureText);
+
+    const mmTextManager = new TextStrategy(outterFactory);
+    mmTextManager.fontWeight = "thin";
+    mmTextManager.fontSize = 28; 
+    // metaTextManager.textAnchor = "middle";
+    let mmText = mmTextManager.create(300,460,"mm.89-98");
+    systemManager.svgRoot.appendChild(mmText);
+
+    const metaTextManager = new TextStrategy(outterFactory);
+    metaTextManager.fontWeight = "bold";
+    metaTextManager.fontSize = 24; 
+    // // metaTextManager.textAnchor = "middle";
+    let metaText1 = metaTextManager.create(300,460+50,"Aggregate");
+    systemManager.svgRoot.appendChild(metaText1);
+    let metaText2 = metaTextManager.create(300,460+90,"Octat. III");
+    systemManager.svgRoot.appendChild(metaText2);
+    let metaText3 = metaTextManager.create(300,460+130,"Diat. region");
+    systemManager.svgRoot.appendChild(metaText3);
+    metaTextManager.textAnchor = "end";
+    let metaText1r = metaTextManager.create(500,460+50,"9/12");
+    systemManager.svgRoot.appendChild(metaText1r);
+    let metaText2r = metaTextManager.create(500,460+90,"7/8");
+    systemManager.svgRoot.appendChild(metaText2r);
+    let metaText3r = metaTextManager.create(500,460+130,"7/7");
+    systemManager.svgRoot.appendChild(metaText3r);
 });

@@ -38,6 +38,12 @@
   </style>
 
   <!-- test  -->
+  <!-- <circle cx="300" cy="375" r="10" fill="red" />
+  <circle cx="330" cy="405" r="10" fill="red" /> -->
+
+
+
+  <rect x="300" y="375" width="60" height="60" fill="none" stroke="black" stroke-width="2"/>
   <!-- <path d="M 50 0 
            A 25 25 0 0 1 75 25
            L 75 275
