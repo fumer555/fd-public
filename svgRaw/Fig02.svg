@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2200" height="1700" version="1.1">
+
+  <style>
+    .black-fill {
+      stroke: black;
+      fill: black;
+    }
+    <!-- .line {
+      fill: none;
+    } -->
+    .staff-line {
+      stroke-width: 1.5;
+    }
+    .measure-line {
+      stroke-width: 2;
+    }
+    .dashed-line {
+      stroke-dasharray: 10, 10;
+    }
+    .dotted-line {
+      stroke-dasharray: 2, 2;
+    }
+    .cross {
+      stroke-width: 3;
+    }
+    .bold-text {
+      font-family: "Times New Roman";
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .hidden {
+      display: none;
+    }
+
+  </style>
+
+  <!-- test  -->
+  <!-- <circle cx="300" cy="375" r="10" fill="red" />
+  <circle cx="330" cy="405" r="10" fill="red" /> -->
+
+
+
+  <rect x="300" y="375" width="60" height="60" fill="none" stroke="black" stroke-width="2"/>
+  <!-- <path d="M 50 0 
+           A 25 25 0 0 1 75 25
+           L 75 275
+           A 25 25 0 0 1 50 300" 
+        fill="none" stroke="black" stroke-width="2"/> -->
+
+  <!-- <path d="M 50 0 
+           A 50 50 0 0 1 100 50" 
+        fill="none" stroke="black" stroke-width="2"/> -->
+
+  <!-- order of layer -->
+    <!-- gray out  -->
+    <g id="grayRoot"><rect x="282" y="1147" width="36" height="176" fill="#cccccc" rx="18" ry="18"/><rect x="347" y="907" width="36" height="256" fill="#cccccc" rx="18" ry="18"/><rect x="412" y="947" width="36" height="136" fill="#cccccc" rx="18" ry="18"/><rect x="477" y="947" width="36" height="256" fill="#cccccc" rx="18" ry="18"/></g>
+
+    <!-- the rest - Black fill for lines to show up together -->
+    <g class="black-fill">
+      <!-- title  -->
+      <text x="1100" y="155" class="bold-text" text-anchor="middle">
+        Figure 2, "The Augurs of Spring", mm. 89-98
+      </text>
+      <!-- vertical lines -->
+      <g class="measure-line">
+        <polyline points="555,370 555,1380"/>
+      </g>
+      <!-- the big pop up from js -->
+      <g id="svgRoot"><polyline points="265,855 555,855" id="line-6" class="staff-line "/><text x="205" y="855" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">6</text><polyline points="265,895 555,895" id="line-11" class="staff-line dashed-line"/><text x="205" y="895" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">11</text><polyline points="265,935 555,935" id="line-4" class="staff-line "/><text x="205" y="935" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">4</text><polyline points="265,975 555,975" id="line-9" class="staff-line "/><text x="205" y="975" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">9</text><polyline points="265,1015 555,1015" id="line-2" class="staff-line dashed-line"/><text x="205" y="1015" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">2</text><polyline points="265,1055 555,1055" id="line-7" class="staff-line "/><text x="205" y="1055" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">7</text><polyline points="265,1095 555,1095" id="line-0" class="staff-line "/><text x="205" y="1095" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">0</text><polyline points="265,1135 555,1135" id="line-5" class="staff-line "/><text x="205" y="1135" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">5</text><polyline points="265,1175 555,1175" id="line-10" class="staff-line "/><text x="205" y="1175" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">10</text><polyline points="265,1215 555,1215" id="line-3" class="staff-line "/><text x="205" y="1215" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">3</text><polyline points="265,1255 555,1255" id="line-8" class="staff-line "/><text x="205" y="1255" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">8</text><polyline points="265,1295 555,1295" id="line-1" class="staff-line dotted-line"/><text x="205" y="1295" font-family="Times New Roman" font-size="24" dominant-baseline="middle" class="black-fill">1</text><path d="M292,1165 L308,1185 M292,1185 L308,1165" class="cross"/><path d="M292,1205 L308,1225 M292,1225 L308,1205" class="cross"/><path d="M292,1285 L308,1305 M292,1305 L308,1285" class="cross"/><path d="M357,925 L373,945 M357,945 L373,925" class="cross"/><path d="M357,1005 L373,1025 M357,1025 L373,1005" class="cross"/><path d="M357,1085 L373,1105 M357,1105 L373,1085" class="cross"/><path d="M357,1125 L373,1145 M357,1145 L373,1125" class="cross"/><path d="M422,965 L438,985 M422,985 L438,965" class="cross"/><path d="M422,1045 L438,1065 M422,1065 L438,1045" class="cross"/><path d="M487,965 L503,985 M487,985 L503,965" class="cross"/><path d="M487,1045 L503,1065 M487,1065 L503,1045" class="cross"/><path d="M487,1085 L503,1105 M487,1105 L503,1085" class="cross"/><path d="M487,1125 L503,1145 M487,1145 L503,1125" class="cross"/><path d="M487,1165 L503,1185 M487,1185 L503,1165" class="cross"/><path d="M510,915 A25,25 0 0 1 535,940 L535,1240 A25,25 0 0 1 510,1265" class="brace" fill="none" stroke-width="2"/><text x="330" y="408" font-family="Times New Roman" font-size="30" font-weight="bold" dominant-baseline="middle" class="black-fill" text-anchor="middle">25</text><text x="300" y="460" font-family="Times New Roman" font-size="28" font-weight="thin" dominant-baseline="middle" class="black-fill" text-anchor="start">mm.89-98</text><text x="300" y="510" font-family="Times New Roman" font-size="24" font-weight="bold" dominant-baseline="middle" class="black-fill" text-anchor="start">Aggregate</text><text x="300" y="550" font-family="Times New Roman" font-size="24" font-weight="bold" dominant-baseline="middle" class="black-fill" text-anchor="start">Octat. III</text><text x="300" y="590" font-family="Times New Roman" font-size="24" font-weight="bold" dominant-baseline="middle" class="black-fill" text-anchor="start">Diat. region</text><text x="500" y="510" font-family="Times New Roman" font-size="24" font-weight="bold" dominant-baseline="middle" class="black-fill" text-anchor="end">9/12</text><text x="500" y="550" font-family="Times New Roman" font-size="24" font-weight="bold" dominant-baseline="middle" class="black-fill" text-anchor="end">7/8</text><text x="500" y="590" font-family="Times New Roman" font-size="24" font-weight="bold" dominant-baseline="middle" class="black-fill" text-anchor="end">7/7</text></g>
+    </g>
+
+
+  
+  <script type="text/ecmascript" xlink:href="script.js"/>
+
+</svg>
