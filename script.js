@@ -3,6 +3,7 @@ let globalSystemY = 855;
 let globalBeatDistance = 65;
 let globalStarX = globalSystemX + globalBeatDistance;
 let globalStarY = globalSystemY;
+let globalStafflineIncrementX = 290;
 
 
 class SVGElementFactory {
@@ -163,7 +164,7 @@ class PolylineStrategy {
         // this.numberLines = 12;
     }
 
-    create(id, y, incrementX, className, textContent) {
+    create(id, y, incrementX, className, textContent) {// this method's got be changed
         let polyline = this.factory.createElement("polyline", {
             points: `${this.leftX},${y} ${this.leftX + incrementX},${y}`,
             id: `line-${id}`,
@@ -292,13 +293,16 @@ class SVGMeasureManager {
         this.grayRoot = document.getElementById("grayRoot");
         // using the 3 classes above 
         this.factory = new SVGElementFactory(this.svgNS);
+
+
+        this.singlePolylineStrategy = new PolylineStrategy(this.factory); //this has to be taken out
+
         this.crossShapeStrategy = new CrossShapeStrategy(this.factory);
-        this.polylineStrategy = new PolylineStrategy(this.factory);
         this.grayAreaStrategy = new GrayAreaStrategy(this.factory);
         this.braceShapeStrategy = new BraceShapeStrategy(this.factory);
 
         // other attributes to be redefined
-        this.stafflineIncrementX = 290;
+        this.stafflineIncrementX = globalStafflineIncrementX;
         this.starXStart = globalSystemX;
         this.starYStart = globalSystemY;
     }
