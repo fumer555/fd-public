@@ -11,3 +11,31 @@
         </layer>
     </staff>
 </measure>
+
+<measure n="3">
+    <staff n="1">
+        <layer>
+            <beam>
+                <note pname="a" oct="4" dur="8" />
+                <note pname="b" oct="4" dur="8" />
+                <note pname="c" oct="5" dur="8" />
+                <note pname="d" oct="5" dur="8"/>
+            </beam>
+            <note pname="e" oct="5" dur="4"/>
+            <beam>
+                <note pname="d" oct="5" dur="8" />
+                <note pname="b" oct="4" dur="8" />
+            </beam>
+        </layer>
+    </staff>
+</measure>
+<measure n="4">
+    <staff n="1">
+        <layer>
+            <note pname="c" oct="5" dur="4" />
+            <note pname="b" oct="4" dur="4" />
+            <rest dur="4" />
+        </layer>
+    </staff>
+</measure>
+
