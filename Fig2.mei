@@ -1,0 +1,13 @@
+<measure n="2">
+    <staff n="1">
+        <layer>
+            <note pname="e" oct="4" dur="4" />
+            <beam>
+                <note pname="e" oct="4" dur="8" />
+                <note pname="g" oct="4" dur="8" />
+            </beam>
+            <note pname="b" oct="4" dur="4" dots="1" />
+            <note pname="g" oct="4" dur="8" />
+        </layer>
+    </staff>
+</measure>

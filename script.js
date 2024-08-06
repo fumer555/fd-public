@@ -1,3 +1,10 @@
+let globalSystemX = 300;
+let globalSystemY = 855;
+let globalBeatDistance = 65;
+let globalStarX = globalSystemX + globalBeatDistance;
+let globalStarY = globalSystemY;
+
+
 class SVGElementFactory {
     constructor(svgNS) {
         this.svgNS = svgNS;
@@ -278,11 +285,102 @@ class SVGSystemManager {
     }
 }
 
-let globalSystemX = 300;
-let globalSystemY = 855;
-let globalBeatDistance = 65;
-let globalStarX = globalSystemX + globalBeatDistance;
-let globalStarY = globalSystemY;
+class SVGMeasureManager {
+    constructor(svgRootId) {
+        this.svgNS = "http://www.w3.org/2000/svg";
+        this.svgRoot = document.getElementById(svgRootId);
+        this.grayRoot = document.getElementById("grayRoot");
+        // using the 3 classes above 
+        this.factory = new SVGElementFactory(this.svgNS);
+        this.crossShapeStrategy = new CrossShapeStrategy(this.factory);
+        this.polylineStrategy = new PolylineStrategy(this.factory);
+        this.grayAreaStrategy = new GrayAreaStrategy(this.factory);
+        this.braceShapeStrategy = new BraceShapeStrategy(this.factory);
+
+        // other attributes to be redefined
+        this.stafflineIncrementX = 290;
+        this.starXStart = globalSystemX;
+        this.starYStart = globalSystemY;
+    }
+
+    createStar(x, y) {
+        let cross = this.crossShapeStrategy.create(x, y);
+        this.svgRoot.appendChild(cross);
+    }
+
+    overFlow() {
+        pass;
+    }
+
+    underFlow() {
+        pass;
+    }
+
+    createXs(xAttributes) { //going from symbolic to numerical, this is pretty brutal, needs to be dynamic
+        const xStart = 300;
+        const yStart = 855;
+        xAttributes.forEach(([xOffset, yOffset]) => {
+            const x = xStart + (xOffset - 1) * 65;
+            const y = yStart + (yOffset - 1) * 40;
+            this.createStar(x, y);
+        });
+    }
+
+    createMultipleStars(starAttributes){
+        pass;
+    }
+
+    symbolic2Coordinate(starAttributes){
+        pass;
+    }
+
+    createPolylines(lineAttributes, startY=this.starYStart, includeNumber=false) {
+        let y = startY;
+        let gap = 40;
+        let numLines = lineAttributes.length;
+
+        for (let i = 0; i < numLines; i++) {
+            let [key, className, override] = lineAttributes[i]; //override not used yet
+            let { polyline, text } = this.polylineStrategy.create(
+                key, y, this.stafflineIncrementX, className, key
+            );
+
+            this.svgRoot.appendChild(polyline);
+            if (includeNumber && key !== undefined) {
+                this.svgRoot.appendChild(text);
+            }
+
+            y += gap;
+        }
+    }
+
+    createGrayAreasByCoordiante(grayAreaAttributes) {
+        let numGrayAreas = grayAreaAttributes.length;
+        for (let i = 0; i < numGrayAreas; i++){
+            let [x, headY, endY] = grayAreaAttributes[i];
+            let grayArea = this.grayAreaStrategy.create(x, headY, endY);
+            this.grayRoot.appendChild(grayArea);
+        }
+    }
+    createGrayArea() {
+        let grayArea = this.grayAreaStrategy.create(300, 1175, 1295);
+        this.grayRoot.appendChild(grayArea);
+        // pass;
+    }
+
+    createBrace(x, y){
+        let brace = this.braceShapeStrategy.create(x, y);
+        this.svgRoot.appendChild(brace);
+    }
+
+    changeClass(lineId, newClass) {
+        let line = document.getElementById(lineId);
+        if (line) {
+            line.setAttribute("class", newClass);
+        }
+    }
+}
+
 
 // Using the class
 document.addEventListener("DOMContentLoaded", () => {
