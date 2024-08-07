@@ -15,13 +15,11 @@ function addMeasure() {
 }
 
 function updateXMLPreview() {
-    const xmlContent = renderXML();
-    document.getElementById('xmlPreview').textContent = xmlContent;
+    document.getElementById('xmlPreview').value = renderXML();
 }
 
 function renderXML() {
     const lines = lineOrder.split(' ').map(n => `                <line n="${n}" class="" ifBracket="false"/>`).join('\n');
-
     return `<mei xmlns="http://www.music-encoding.org/ns/mei">
   <meiHead>
     <fileDesc>
@@ -57,7 +55,8 @@ ${lines}
 }
 
 function downloadXML() {
-    const xmlBlob = new Blob([renderXML()], { type: 'application/xml' });
+    const xmlContent = document.getElementById('xmlPreview').value;
+    const xmlBlob = new Blob([xmlContent], { type: 'application/xml' });
     const url = URL.createObjectURL(xmlBlob);
     const link = document.createElement('a');
     link.href = url;
