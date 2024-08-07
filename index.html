@@ -1,53 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>SVG Slur Example</title>
-<style>
-  svg { background-color: #f0f0f0; }
-  circle { fill: red; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEI XML Creator</title>
 </head>
 <body>
-<svg width="400" height="200">
-  <!-- Define the notes as circles -->
-  <circle id="note1" cx="50" cy="150" r="5"></circle>
-  <circle id="note2" cx="350" cy="50" r="5"></circle>
-  <!-- Path for the slur -->
-  <path id="slurPath" fill="none" stroke="black" stroke-width="2"></path>
-</svg>
+    <h1>MEI XML Creator</h1>
+    <input id="lineOrder" placeholder="Enter line order e.g., 11 4 9 2 7 0 5 10 3 8 1 6">
+    <input id="beatCount" placeholder="Enter beat count">
+    <button onclick="addMeasure()">Add Measure</button>
+    <button onclick="downloadXML()">Download XML</button>
+    <pre id="xmlPreview"></pre>
 
-<script>
-  // Function to calculate control points and update the path
-  function drawSlur() {
-    const svgns = "http://www.w3.org/2000/svg";
-
-    // Get note positions
-    const note1 = document.getElementById("note1");
-    const note2 = document.getElementById("note2");
-    const x1 = parseInt(note1.getAttribute("cx"));
-    const y1 = parseInt(note1.getAttribute("cy"));
-    const x2 = parseInt(note2.getAttribute("cx"));
-    const y2 = parseInt(note2.getAttribute("cy"));
-
-    // Calculate control points
-    const ctrlYOffset = 50; // Control point vertical offset
-    const ctrl1 = { x: x1 + (x2 - x1) * 0.3, y: y1 - ctrlYOffset };
-    const ctrl2 = { x: x1 + (x2 - x1) * 0.7, y: y2 - ctrlYOffset };
-
-    // Update the path for the slur
-    const path = document.getElementById("slurPath");
-    const pathData = [
-      `M ${x1} ${y1}`,  // Move to note1
-      `C ${ctrl1.x} ${ctrl1.y}`, // Control point 1
-      `${ctrl2.x} ${ctrl2.y}`, // Control point 2
-      `${x2} ${y2}` // Line to note2
-    ].join(" ");
-    path.setAttribute("d", pathData);
-  }
-
-  // Draw the initial slur
-  drawSlur();
-</script>
+    <script src="app.js"></script>
 </body>
 </html>
