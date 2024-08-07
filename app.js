@@ -20,6 +20,8 @@ function updateXMLPreview() {
 }
 
 function renderXML() {
+    const lines = lineOrder.split(' ').map(n => `<line n="${n}" class="" ifBracket="false"/>`).join('');
+
     return `
 <mei xmlns="http://www.music-encoding.org/ns/mei">
     <meiHead>
@@ -40,7 +42,17 @@ function renderXML() {
                         </measureGrp>
                     </scoreDef>
                     <section>
-                        <!-- XML based on measures and beats can be constructed here -->
+                        ${measures.map((measure, index) => `
+                        <measure n="${index + 1}">
+                            ${Array.from({length: measure.beatCount}, (_, beatIndex) => `
+                            <beat n="${beatIndex + 1}">
+                                ${lines}
+                            </beat>
+                            <setLabel beat="${beatIndex + 1}" place="above"></setLabel>
+                            <curvedBrace beat="${beatIndex + 1}" place="right"></curvedBrace>
+                            `).join('')}
+                        </measure>
+                        `).join('')}
                     </section>
                 </score>
             </mdiv>
