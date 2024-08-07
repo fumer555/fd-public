@@ -4,18 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEI XML Creator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        input, button, textarea {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        textarea {
+            height: 300px;
+        }
+    </style>
 </head>
 <body>
     <h1>MEI XML Creator</h1>
     <input id="scoreTitle" placeholder="Enter score title e.g., Stravinsky">
-    <input id="fileName" placeholder="Enter filename (optional)">
-    <button onclick="downloadXML()">Download XML</button>
 
     <input id="lineOrder" placeholder="Enter line order e.g., 11 4 9 2 7 0 5 10 3 8 1 6">
     
     <input id="beatCount" placeholder="Enter beat count">
     <button onclick="addMeasure()">Add Measure</button>
-    <textarea id="xmlPreview" style="width: 100%; height: 300px;"></textarea>
+    <textarea id="xmlPreview"></textarea>
+
+    <input id="fileName" placeholder="Enter filename (optional)">
+    <button onclick="downloadXML()">Download XML</button>
 
     <script src="app.js"></script>
 </body>
