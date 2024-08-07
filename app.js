@@ -20,44 +20,39 @@ function updateXMLPreview() {
 }
 
 function renderXML() {
-    const lines = lineOrder.split(' ').map(n => `<line n="${n}" class="" ifBracket="false"/>`).join('');
+    const lines = lineOrder.split(' ').map(n => `                <line n="${n}" class="" ifBracket="false"/>`).join('\n');
 
-    return `
-<mei xmlns="http://www.music-encoding.org/ns/mei">
-    <meiHead>
-        <fileDesc>
-            <titleStmt>
-                <title type="main">Stravinsky</title>
-            </titleStmt>
-            <pubStmt/>
-        </fileDesc>
-    </meiHead>
-    <music>
-        <body>
-            <mdiv>
-                <score>
-                    <scoreDef line-order="${lineOrder}">
-                        <measureGrp>
-                            ${measures.map((m, index) => `<measureDef n="${index + 1}" bcount="${m.beatCount}"/>`).join('')}
-                        </measureGrp>
-                    </scoreDef>
-                    <section>
-                        ${measures.map((measure, index) => `
-                        <measure n="${index + 1}">
-                            ${Array.from({length: measure.beatCount}, (_, beatIndex) => `
-                            <beat n="${beatIndex + 1}">
-                                ${lines}
-                            </beat>
-                            <setLabel beat="${beatIndex + 1}" place="above"></setLabel>
-                            <curvedBrace beat="${beatIndex + 1}" place="right"></curvedBrace>
-                            `).join('')}
-                        </measure>
-                        `).join('')}
-                    </section>
-                </score>
-            </mdiv>
-        </body>
-    </music>
+    return `<mei xmlns="http://www.music-encoding.org/ns/mei">
+  <meiHead>
+    <fileDesc>
+      <titleStmt>
+        <title type="main">Stravinsky</title>
+      </titleStmt>
+      <pubStmt/>
+    </fileDesc>
+  </meiHead>
+  <music>
+    <body>
+      <mdiv>
+        <score>
+          <scoreDef line-order="${lineOrder}">
+            <measureGrp>
+${measures.map((m, index) => `              <measureDef n="${index + 1}" bcount="${m.beatCount}"/>`).join('\n')}
+            </measureGrp>
+          </scoreDef>
+          <section>
+${measures.map((measure, index) => `            <measure n="${index + 1}">
+${Array.from({length: measure.beatCount}, (_, beatIndex) => `              <beat n="${beatIndex + 1}">
+${lines}
+              </beat>
+              <setLabel beat="${beatIndex + 1}" place="above"></setLabel>
+              <curvedBrace beat="${beatIndex + 1}" place="right"></curvedBrace>`).join('\n')}
+            </measure>`).join('\n')}
+          </section>
+        </score>
+      </mdiv>
+    </body>
+  </music>
 </mei>`;
 }
 
