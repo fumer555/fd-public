@@ -19,7 +19,6 @@ function updateXMLPreview() {
 }
 
 function renderXML() {
-    const lines = lineOrder.split(' ').map(n => `                <line n="${n}" class="" ifBracket="false"/>`).join('\n');
     return `<mei xmlns="http://www.music-encoding.org/ns/mei">
   <meiHead>
     <fileDesc>
@@ -39,12 +38,12 @@ ${measures.map((m, index) => `              <measureDef n="${index + 1}" bcount=
             </measureGrp>
           </scoreDef>
           <section>
-${measures.map((measure, index) => `            <measure n="${index + 1}">
-${Array.from({length: measure.beatCount}, (_, beatIndex) => `              <beat n="${beatIndex + 1}">
-${lines}
+${measures.map((measure, mIndex) => `            <measure n="${mIndex + 1}">
+${Array.from({length: measure.beatCount}, (_, bIndex) => `              <beat n="${bIndex + 1}">
+${lineOrder.split(' ').map(line => `                <star id="${mIndex + 1} ${bIndex + 1} ${line}" class="" ifStar="false" ifBracket="false"/>`).join('\n')}
               </beat>
-              <setLabel beat="${beatIndex + 1}" place="above"></setLabel>
-              <curvedBrace beat="${beatIndex + 1}" place="right"></curvedBrace>`).join('\n')}
+              <setLabel beat="${bIndex + 1}" place="above"></setLabel>
+              <curvedBrace beat="${bIndex + 1}" place="right"></curvedBrace>`).join('\n')}
             </measure>`).join('\n')}
           </section>
         </score>
