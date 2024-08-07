@@ -9,10 +9,12 @@
     <h1>MEI XML Creator</h1>
     <input id="scoreTitle" placeholder="Enter score title e.g., Stravinsky">
     <input id="fileName" placeholder="Enter filename (optional)">
+    <button onclick="downloadXML()">Download XML</button>
+
     <input id="lineOrder" placeholder="Enter line order e.g., 11 4 9 2 7 0 5 10 3 8 1 6">
+    
     <input id="beatCount" placeholder="Enter beat count">
     <button onclick="addMeasure()">Add Measure</button>
-    <button onclick="downloadXML()">Download XML</button>
     <textarea id="xmlPreview" style="width: 100%; height: 300px;"></textarea>
 
     <script src="app.js"></script>
