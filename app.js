@@ -1,5 +1,15 @@
 let lineOrder = '';
 let measures = [];
+let scoreTitle = '';
+let customFileName = '';
+
+document.getElementById('scoreTitle').addEventListener('change', function() {
+    scoreTitle = this.value;
+});
+
+document.getElementById('fileName').addEventListener('change', function() {
+    customFileName = this.value;
+});
 
 document.getElementById('lineOrder').addEventListener('change', function() {
     lineOrder = this.value;
@@ -23,7 +33,7 @@ function renderXML() {
   <meiHead>
     <fileDesc>
       <titleStmt>
-        <title type="main">Stravinsky</title>
+        <title type="main">${scoreTitle || 'Untitled'}</title>
       </titleStmt>
       <pubStmt/>
     </fileDesc>
@@ -53,13 +63,19 @@ ${lineOrder.split(' ').map(line => `                <star id="${mIndex + 1} ${bI
 </mei>`;
 }
 
+function sanitizeFilename(title) {
+    return title.replace(/[<>:"/\\|?*]+/g, '').replace(/[\s]+/g, '_'); // Remove problematic characters and replace spaces with underscores
+}
+
 function downloadXML() {
     const xmlContent = document.getElementById('xmlPreview').value;
+    let filename = customFileName.trim() ? customFileName : sanitizeFilename(scoreTitle || 'MEI_Score');
+    filename = filename ? `${filename}.xml` : 'MEI_Score.xml'; // Ensure there's a default filename
     const xmlBlob = new Blob([xmlContent], { type: 'application/xml' });
     const url = URL.createObjectURL(xmlBlob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = "MEI_Stravinsky.xml";
+    link.download = filename;
     link.click();
     URL.revokeObjectURL(url); // Clean up
 }

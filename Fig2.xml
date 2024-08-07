@@ -22,22 +22,47 @@
                     <section>
                         <measure n="1">
                             <beat n="1">
-                                <line n="11"></line>
-                                <line n="4"></line>
-                                <line n="9"></line>
-                                <line n="2"></line>
-                                <line n="7"></line>
-                                <line n="0"></line>
-                                <line n="5"></line>
-                                <line n="10"></line>
-                                <line n="3"></line>
-                                <line n="8"></line>
-                                <line n="1"></line>
-                                <line n="6"></line>
+                                <line n="11" class="" ifBracket="false"/>
+                                <line n="4" class="" ifBracket="false"/>
+                                <line n="9" class="" ifBracket="false"/>
+                                <line n="2" class="" ifBracket="false"/>
+                                <line n="7" class="" ifBracket="false"/>
+                                <line n="0" class="" ifBracket="false"/>
+                                <line n="5" class="" ifBracket="false"/>
+                                <line n="10" class="" ifBracket="false"/>
+                                <line n="3" class="" ifBracket="false"/>
+                                <line n="8" class="" ifBracket="false"/>
+                                <line n="1" class="" ifBracket="false"/>
+                                <line n="6" class="" ifBracket="false"/>
                             </beat>
-                            <dynam staff="1" tstamp="1" place="below">ff</dynam>
+                            <setLabel beat="1" place="above"></setLabel>
+                            <curvedBrace beat="1" place="right"></curvedBrace>
+                            <beat n="2">
+                                <line n="11" class="" ifBracket="false"/>
+                                <line n="4" class="" ifBracket="false"/>
+                                <line n="9" class="" ifBracket="false"/>
+                                <line n="2" class="" ifBracket="false"/>
+                                <line n="7" class="" ifBracket="false"/>
+                                <line n="0" class="" ifBracket="false"/>
+                                <line n="5" class="" ifBracket="false"/>
+                                <line n="10" class="" ifBracket="false"/>
+                                <line n="3" class="" ifBracket="false"/>
+                                <line n="8" class="" ifBracket="false"/>
+                                <line n="1" class="" ifBracket="false"/>
+                                <line n="6" class="" ifBracket="false"/>
+                            </beat>
+                            <setLabel beat="2" place="above"></setLabel>
+                            <curvedBrace beat="2" place="right"></curvedBrace>
+                            <!-- other beats from 3 to 7 as 7 bcounts defined above varies from measure to measure-->
                         </measure>
-                        other measures 
+                        <numberBox measure="2"></numberBox>
+                        <mmNumber measure="2"></mmNumber>
+                        <measureMeta measure="2">
+                            <div location="l">Aggregate</div>
+                            <div location="r">Octat. III</div>
+                            <div location="min"></div>
+                        </measureMeta>
+                        <!-- other measures  from 2 to 4 as defined avove-->
                     </section>
                 </score>
             </mdiv>
