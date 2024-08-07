@@ -2,7 +2,7 @@
     <meiHead>
         <fileDesc>
             <titleStmt>
-                <title type="main">March</title>
+                <title type="main">Stravinsky</title>
             </titleStmt>
             <pubStmt></pubStmt>
         </fileDesc>
@@ -11,80 +11,33 @@
         <body>
             <mdiv>
                 <score>
-                    <scoreDef key.sig="3f" meter.sym="cut">
-                        <staffGrp>
-                            <staffDef n="1" lines="5" clef.shape="G" clef.line="2" />
-                        </staffGrp>
+                    <scoreDef line-order= "11 4 9 2 7 0 5 10 3 8 1 6">
+                        <measureGrp>
+                            <measureDef n="1" bcount="7"/>
+                            <measureDef n="2" bcount="5"/>
+                            <measureDef n="3" bcount="6"/>
+                            <measureDef n="4" bcount="8"/>
+                        </measureGrp>
                     </scoreDef>
                     <section>
-                        <measure n="0">
-                            <staff n="1">
-                                <layer>
-                                    <note pname="b" oct="3" dur="4" />
-                                </layer>
-                            </staff>
+                        <measure n="1">
+                            <beat n="1">
+                                <line n="11"></line>
+                                <line n="4"></line>
+                                <line n="9"></line>
+                                <line n="2"></line>
+                                <line n="7"></line>
+                                <line n="0"></line>
+                                <line n="5"></line>
+                                <line n="10"></line>
+                                <line n="3"></line>
+                                <line n="8"></line>
+                                <line n="1"></line>
+                                <line n="6"></line>
+                            </beat>
                             <dynam staff="1" tstamp="1" place="below">ff</dynam>
                         </measure>
-                        <measure n="1">
-                            <staff n="1">
-                                <layer>
-                                    <note pname="e" oct="4" dur="4" />
-                                    <beam>
-                                        <note pname="e" oct="4" dur="8" />
-                                        <note pname="g" oct="4" dur="8" />
-                                    </beam>
-                                    <note pname="f" oct="4" dur="4" dots="1" >
-                                        <artic artic="acc" place="above"/>
-                                    </note>
-                                    <note pname="d" oct="4" dur="8"></note>
-                                </layer>
-                            </staff>
-                        </measure>
-                        <measure n="2">
-                            <staff n="1">
-                                <layer>
-                                    <note pname="e" oct="4" dur="4"></note>
-                                    <beam>
-                                        <note pname="e" oct="4" dur="8" ></note>
-                                        <note pname="g" oct="4" dur="8" ></note>
-                                    </beam>
-                                    <note pname="b" oct="4" dur="4" dots="1">
-                                        <artic artic="acc" place="above"/>
-                                    </note>
-                                    <note pname="g" oct="4" dur="8" ></note>
-                                </layer>
-                            </staff>
-                        </measure>
-                        <measure n="3">
-                            <staff n="1">
-                                <layer>
-                                    <beam>
-                                        <note dur="8" pname="a" oct="4" xml:id="d1e4614"></note>
-                                        <note dur="8" pname="b" oct="4" xml:id="d1e4615"></note>
-                                        <note dur="8" pname="c" oct="5"></note>
-                                        <note dur="8" pname="d" oct="5"></note>
-                                    </beam>
-                                    <note dur="4" pname="e" oct="5">
-                                        <artic artic="acc" place="above"/>
-                                    </note>
-                                    <beam>
-                                        <note dur="8" pname="d" oct="5"></note>
-                                        <note dur="8" pname="b" oct="4"></note>
-                                    </beam>
-                                </layer>
-                            </staff>
-                            <slur staff="1" startid="#d1e4614" endid="#d1e4615" curvedir="above"/>
-                        </measure>
-
-                        <measure n="4">
-                            <staff n="1">
-                                <layer>
-                                    <note dur="4" pname="c" oct="5"></note>
-                                    <note dur="4" pname="b" oct="4"></note>
-                                    <rest dur="4"/>
-                                </layer>
-                            </staff>
-                        </measure>
+                        other measures 
                     </section>
                 </score>
             </mdiv>
