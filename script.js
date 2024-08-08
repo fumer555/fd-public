@@ -129,12 +129,16 @@ class BraceShapeStrategy {
         this.lineLength = 350;
     }
 
-    create(x, y) {
+    create(x, y, ifDashed=false) {
         // Coordinates for the brace's arcs and connecting line
         let startX = x;
         let startY = y;
         let endX = x + this.arcRadius;
         let endY = y + this.lineLength;
+        let lineClass = "brace";
+        if (ifDashed) {
+            lineClass += " dashed-line";
+        }
 
         // Path data using SVG's path syntax for drawing a brace
         let pathData = `M${startX},${startY} ` +
@@ -145,7 +149,7 @@ class BraceShapeStrategy {
         // Creating the SVG path element with class 'brace'
         return this.factory.createElement("path", {
             d: pathData,
-            class: "brace",
+            class: lineClass,
             fill: "none",
             "stroke-width": 2
         });
@@ -273,8 +277,8 @@ class SVGSystemManager {
         // pass;
     }
 
-    createBrace(x, y){
-        let brace = this.braceShapeStrategy.create(x, y);
+    createBrace(x, y, ifDashed=false){
+        let brace = this.braceShapeStrategy.create(x, y, ifDashed);
         this.svgRoot.appendChild(brace);
     }
 
@@ -345,7 +349,7 @@ class SVGMeasureManager {
 
         for (let i = 0; i < numLines; i++) {
             let [key, className, override] = lineAttributes[i]; //override not used yet
-            let { polyline, text } = this.polylineStrategy.create(
+            let { polyline, text } = this.singlePolylineStrategy.create(
                 key, y, this.stafflineIncrementX, className, key
             );
 
@@ -372,8 +376,8 @@ class SVGMeasureManager {
         // pass;
     }
 
-    createBrace(x, y){
-        let brace = this.braceShapeStrategy.create(x, y);
+    createBrace(x, y, ifDashed=false){
+        let brace = this.braceShapeStrategy.create(x, y, ifDashed);
         this.svgRoot.appendChild(brace);
     }
 
@@ -388,7 +392,7 @@ class SVGMeasureManager {
 
 // Using the class
 document.addEventListener("DOMContentLoaded", () => {
-    const systemManager = new SVGSystemManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
+    const systemManager = new SVGMeasureManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
     systemManager.createPolylines([
         [6, "", false],
         [11, "dashed-line", false],
