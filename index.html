@@ -32,18 +32,30 @@
         textarea {
             height: 300px;
         }
+        .side-by-side {
+            display: flex; /* Turns the div into a flex container */
+        }
+        .side-by-side input {
+            flex: 3; /* Each input will take up an equal amount of space in the container */
+            margin-right: 5px; /* Adds some spacing between the inputs */
+        }
+        .side-by-side button {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
     <h1>MEI XML Creator</h1>
     <input id="scoreTitle" placeholder="Enter score title e.g., Stravinsky">
-
     <input id="lineOrder" placeholder="Enter line order e.g., 11 4 9 2 7 0 5 10 3 8 1 6">
-    
     <input id="beatCount" placeholder="Enter beat count">
     <button onclick="addMeasure()">Add Measure</button>
     <textarea id="xmlPreview"></textarea>
-
+    <div class="side-by-side">
+        <input id="starPair1" placeholder="Enter first star ID e.g., 1 1 11">
+        <input id="starPair2" placeholder="Enter second star ID e.g., 1 1 4">
+        <button onclick="addCurvedBrace()">Add Curved Brace</button>
+    </div>
     <input id="fileName" placeholder="Enter filename (optional)">
     <button onclick="downloadXML()">Download XML</button>
 
