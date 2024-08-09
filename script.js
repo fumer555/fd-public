@@ -13,10 +13,17 @@ let globalVerticalBracketAdditionValue = 5;
 
 let globalStafflineIncrementX = 290;
 
-function createAndAppendText(manager, x, y, text, svgRoot) {
-    let textElement = manager.create(x, y, text);
+// function createAndAppendText(manager, x, y, text, svgRoot) {
+//     let textElement = manager.create(x, y, text);
+//     svgRoot.appendChild(textElement);
+// }
+
+function createAndAppendText(manager, svgRoot, ...args) { //next step, take off the methodname and root
+    let methodName="create";
+    let textElement = manager[methodName].apply(manager, args);
     svgRoot.appendChild(textElement);
 }
+
 
 class SVGElementFactory {
     constructor(svgNS) {
@@ -538,38 +545,22 @@ document.addEventListener("DOMContentLoaded", () => {
         ]
     };
 
+    // const methodName = 'create';
 
-    
+    // Box Text Manager
     const boxTextManager = new BoxTextStrategy(outterFactory);
-    let measureText = boxTextManager.create(330, 405, measureDescription["box"]);
-    measureManager.svgRoot.appendChild(measureText);
+    createAndAppendText(boxTextManager, measureManager.svgRoot, 330, 405, measureDescription["box"]);
 
+    // MM Text Manager
     const mmTextManager = new MmTextStrategy(outterFactory);
-    let mmText = mmTextManager.create(300,460,measureDescription["mm"]);
-    measureManager.svgRoot.appendChild(mmText);
+    createAndAppendText(mmTextManager, measureManager.svgRoot, 300, 460, measureDescription["mm"]);
 
     const leftMetaTextManager = new LeftMscTextStrategy(outterFactory);
     const rightMetaTextManager = new RightMscTextStrategy(outterFactory);
 
     measureDescription["msc"].forEach((item, index) => {
-        createAndAppendText(leftMetaTextManager, 300, 460 + 10 + 40 * (index + 1), item[0], measureManager.svgRoot);
-        createAndAppendText(rightMetaTextManager, 500, 460 + 10 + 40 * (index + 1), item[1], measureManager.svgRoot);
+        createAndAppendText(leftMetaTextManager, measureManager.svgRoot, 300, 460 + 10 + 40 * (index + 1), item[0]);
+        createAndAppendText(rightMetaTextManager, measureManager.svgRoot, 500, 460 + 10 + 40 * (index + 1), item[1]);
     });
 
-    const metaTextManager = new TextStrategy(outterFactory);
-
-    metaTextManager.fontWeight = "bold";
-    let metaText1 = metaTextManager.create(300,460+50,"Aggregate");
-    measureManager.svgRoot.appendChild(metaText1);
-    let metaText2 = metaTextManager.create(300,460+90,"Octat. III");
-    measureManager.svgRoot.appendChild(metaText2);
-    let metaText3 = metaTextManager.create(300,460+130,"Diat. region");
-    measureManager.svgRoot.appendChild(metaText3);
-    metaTextManager.textAnchor = "end";
-    let metaText1r = metaTextManager.create(500,460+50,"9/12");
-    measureManager.svgRoot.appendChild(metaText1r);
-    let metaText2r = metaTextManager.create(500,460+90,"7/8");
-    measureManager.svgRoot.appendChild(metaText2r);
-    let metaText3r = metaTextManager.create(500,460+130,"7/7");
-    measureManager.svgRoot.appendChild(metaText3r);
 });
