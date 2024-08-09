@@ -288,11 +288,6 @@ class SVGMeasureManager {
         // the above non used
     }
 
-    createStar(x, y) {
-        let cross = this.crossShapeStrategy.create(x, y);
-        this.svgRoot.appendChild(cross);
-    }
-
     overFlow() {
         pass;
     }
@@ -301,14 +296,13 @@ class SVGMeasureManager {
         pass;
     }
 
-    createListStarsBySymbolic(xAttributes) { //going from symbolic to numerical, this is pretty brutal, needs to be dynamic
-        // const xStart = 300;
-        // const yStart = 855;
-        // this.starXStart = 300;
+    createListStarsBySymbolic(xAttributes) {
         xAttributes.forEach(([xOffset, yOffset]) => {
-            const x = this.starXStart + (xOffset - 1) * globalBeatDistance;
-            const y = this.starYStart + (yOffset - 1) * globalLineDistance;
-            this.createStar(x, y);
+            let x = this.starXStart + (xOffset - 1) * globalBeatDistance;
+            let y = this.starYStart + (yOffset - 1) * globalLineDistance;
+            // this.createStar(x, y); below is the original createStar(x, y) function:
+            let singleStar = this.crossShapeStrategy.create(x, y);
+            this.svgRoot.appendChild(singleStar);
         });
     }
 
