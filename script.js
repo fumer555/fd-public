@@ -189,7 +189,7 @@ class PolylineStrategy {
     }
 }
 
-class SVGSystemManager {
+class SVGmeasureManager {
     constructor(svgRootId, tones) {
         this.svgNS = "http://www.w3.org/2000/svg";
         this.svgRoot = document.getElementById(svgRootId);
@@ -212,10 +212,7 @@ class SVGSystemManager {
         });
     }
 
-    createStar(x, y) {
-        let cross = this.crossShapeStrategy.create(x, y);
-        this.svgRoot.appendChild(cross);
-    }
+
 
     overFlow() {
         pass;
@@ -225,15 +222,7 @@ class SVGSystemManager {
         pass;
     }
 
-    createXs(xAttributes) { //going from symbolic to numerical, this is pretty brutal, needs to be dynamic
-        const xStart = 300;
-        const yStart = 855;
-        xAttributes.forEach(([xOffset, yOffset]) => {
-            const x = xStart + (xOffset - 1) * 65;
-            const y = yStart + (yOffset - 1) * 40;
-            this.createStar(x, y);
-        });
-    }
+
 
     createMultipleStars(starAttributes){
         pass;
@@ -263,24 +252,7 @@ class SVGSystemManager {
         }
     }
 
-    createGrayAreasByCoordiante(grayAreaAttributes) {
-        let numGrayAreas = grayAreaAttributes.length;
-        for (let i = 0; i < numGrayAreas; i++){
-            let [x, headY, endY] = grayAreaAttributes[i];
-            let grayArea = this.grayAreaStrategy.create(x, headY, endY);
-            this.grayRoot.appendChild(grayArea);
-        }
-    }
-    createGrayArea() {
-        let grayArea = this.grayAreaStrategy.create(300, 1175, 1295);
-        this.grayRoot.appendChild(grayArea);
-        // pass;
-    }
 
-    createBrace(x, y, ifDashed=false){
-        let brace = this.braceShapeStrategy.create(x, y, ifDashed);
-        this.svgRoot.appendChild(brace);
-    }
 
     changeClass(lineId, newClass) {
         let line = document.getElementById(lineId);
@@ -392,8 +364,8 @@ class SVGMeasureManager {
 
 // Using the class
 document.addEventListener("DOMContentLoaded", () => {
-    const systemManager = new SVGMeasureManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
-    systemManager.createPolylines([
+    const measureManager = new SVGMeasureManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
+    measureManager.createPolylines([
         [6, "", false],
         [11, "dashed-line", false],
         [4, "", false],
@@ -408,7 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
         [1, "dotted-line", false]
     ], 855, true);
 
-    systemManager.createXs([
+    measureManager.createXs([
         [1, 9],
         [1, 10],
         [1, 12],
@@ -426,15 +398,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ]);
 
-    // systemManager.createGrayArea();
-    systemManager.createGrayAreasByCoordiante([
+    // measureManager.createGrayArea();
+    measureManager.createGrayAreasByCoordiante([
         [300, 1175, 1295],
         [300 + 65, 855 + 40*2, 855 + 40*7],
         [300 + 65 *2, 855 + 40*3, 855 + 40*5],
         [300 + 65 *3, 855 + 40*3, 855 + 40*8]
     ]);
 
-    systemManager.createBrace(300 + 65 *3 + 15, 855 + 40*3 - 60);
+    measureManager.createBrace(300 + 65 *3 + 15, 855 + 40*3 - 60);
 
     let outterFactory = new SVGElementFactory("http://www.w3.org/2000/svg");
     const boxTextManager = new TextStrategy(outterFactory);
@@ -442,30 +414,30 @@ document.addEventListener("DOMContentLoaded", () => {
     boxTextManager.textAnchor = "middle";
     boxTextManager.fontSize = 30;
     let measureText = boxTextManager.create(330,405,"25");
-    systemManager.svgRoot.appendChild(measureText);
+    measureManager.svgRoot.appendChild(measureText);
 
     const mmTextManager = new TextStrategy(outterFactory);
     mmTextManager.fontWeight = "thin";
     mmTextManager.fontSize = 28; 
     // metaTextManager.textAnchor = "middle";
     let mmText = mmTextManager.create(300,460,"mm.89-98");
-    systemManager.svgRoot.appendChild(mmText);
+    measureManager.svgRoot.appendChild(mmText);
 
     const metaTextManager = new TextStrategy(outterFactory);
     metaTextManager.fontWeight = "bold";
     metaTextManager.fontSize = 24; 
     // // metaTextManager.textAnchor = "middle";
     let metaText1 = metaTextManager.create(300,460+50,"Aggregate");
-    systemManager.svgRoot.appendChild(metaText1);
+    measureManager.svgRoot.appendChild(metaText1);
     let metaText2 = metaTextManager.create(300,460+90,"Octat. III");
-    systemManager.svgRoot.appendChild(metaText2);
+    measureManager.svgRoot.appendChild(metaText2);
     let metaText3 = metaTextManager.create(300,460+130,"Diat. region");
-    systemManager.svgRoot.appendChild(metaText3);
+    measureManager.svgRoot.appendChild(metaText3);
     metaTextManager.textAnchor = "end";
     let metaText1r = metaTextManager.create(500,460+50,"9/12");
-    systemManager.svgRoot.appendChild(metaText1r);
+    measureManager.svgRoot.appendChild(metaText1r);
     let metaText2r = metaTextManager.create(500,460+90,"7/8");
-    systemManager.svgRoot.appendChild(metaText2r);
+    measureManager.svgRoot.appendChild(metaText2r);
     let metaText3r = metaTextManager.create(500,460+130,"7/7");
-    systemManager.svgRoot.appendChild(metaText3r);
+    measureManager.svgRoot.appendChild(metaText3r);
 });
