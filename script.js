@@ -1,8 +1,9 @@
-let globalSystemX = 300;
-let globalSystemY = 855;
+let globalSystemXStart = 300;
+let globalSystemYStart = 855;
 let globalBeatDistance = 65;
-let globalStarX = globalSystemX + globalBeatDistance;
-let globalStarY = globalSystemY;
+let globalLineDistance = 40;
+let globalStarX = globalSystemXStart + globalBeatDistance;
+let globalStarY = globalSystemYStart;
 let globalStafflineIncrementX = 290;
 
 
@@ -110,6 +111,7 @@ class GrayAreaStrategy {
         let verticalHeight = endY - headY + this.verticalExpansion * 2;
 
         // <rect x="280" y="1175" width="80" height="180" fill="#cccccc" rx="40" ry="40" />
+        // make 2 cases headY > endY; or headY > endY, override no need here
         return this.factory.createElement("rect", {
             x: cornerX,
             y: cornerY,
@@ -189,11 +191,11 @@ class PolylineStrategy {
     }
 }
 
-class SVGmeasureManager {
+class SVGSystemManager {
     constructor(svgRootId, tones) {
         this.svgNS = "http://www.w3.org/2000/svg";
         this.svgRoot = document.getElementById(svgRootId);
-        this.grayRoot = document.getElementById("grayRoot");
+        // this.grayRoot = document.getElementById("grayRoot");
         // using the 3 classes above 
         this.factory = new SVGElementFactory(this.svgNS);
         this.crossShapeStrategy = new CrossShapeStrategy(this.factory);
@@ -202,9 +204,9 @@ class SVGmeasureManager {
         this.braceShapeStrategy = new BraceShapeStrategy(this.factory);
 
         // other attributes to be redefined
-        this.stafflineIncrementX = 290;
-        this.starXStart = 300;
-        this.starYStart = 855;
+        this.stafflineIncrementX = globalStafflineIncrementX;
+        this.starXStart = globalSystemXStart;
+        this.starYStart = globalSystemYStart;
 
         this.idMap = {};
         tones.forEach((item, index) => {
@@ -263,24 +265,25 @@ class SVGmeasureManager {
 }
 
 class SVGMeasureManager {
-    constructor(svgRootId) {
+    constructor(svgRootId, measureXStart=300, measureYStart=855) {
         this.svgNS = "http://www.w3.org/2000/svg";
         this.svgRoot = document.getElementById(svgRootId);
         this.grayRoot = document.getElementById("grayRoot");
         // using the 3 classes above 
         this.factory = new SVGElementFactory(this.svgNS);
 
-
-        this.singlePolylineStrategy = new PolylineStrategy(this.factory); //this has to be taken out
-
+        // instance definitions 
+        this.singlePolylineStrategy = new PolylineStrategy(this.factory); //this origial one has to be taken out
         this.crossShapeStrategy = new CrossShapeStrategy(this.factory);
         this.grayAreaStrategy = new GrayAreaStrategy(this.factory);
         this.braceShapeStrategy = new BraceShapeStrategy(this.factory);
 
         // other attributes to be redefined
         this.stafflineIncrementX = globalStafflineIncrementX;
-        this.starXStart = globalSystemX;
-        this.starYStart = globalSystemY;
+        this.measureXStart = measureXStart;
+        this.measureYStart = measureYStart;
+        this.starXStart = measureXStart + globalBeatDistance;
+        this.starYStart = measureYStart;
     }
 
     createStar(x, y) {
@@ -296,7 +299,7 @@ class SVGMeasureManager {
         pass;
     }
 
-    createXs(xAttributes) { //going from symbolic to numerical, this is pretty brutal, needs to be dynamic
+    createListStarsBySymbolic(xAttributes) { //going from symbolic to numerical, this is pretty brutal, needs to be dynamic
         const xStart = 300;
         const yStart = 855;
         xAttributes.forEach(([xOffset, yOffset]) => {
@@ -310,7 +313,7 @@ class SVGMeasureManager {
         pass;
     }
 
-    symbolic2Coordinate(starAttributes){
+    symbolic2Coordinate(starAttributes){ //got to work here
         pass;
     }
 
@@ -334,21 +337,35 @@ class SVGMeasureManager {
         }
     }
 
-    createGrayAreasByCoordiante(grayAreaAttributes) {
+    // gray area group 
+
+    createListGrayAreasByCoordiante(grayAreaAttributes) {
         let numGrayAreas = grayAreaAttributes.length;
+        // consider overrides 
         for (let i = 0; i < numGrayAreas; i++){
             let [x, headY, endY] = grayAreaAttributes[i];
             let grayArea = this.grayAreaStrategy.create(x, headY, endY);
             this.grayRoot.appendChild(grayArea);
         }
     }
-    createGrayArea() {
+
+    createGrayAreasByCoordiante(grayAreaAttributes) {
+        let numGrayAreas = grayAreaAttributes.length;
+        // consider overrides 
+        for (let i = 0; i < numGrayAreas; i++){
+            let [x, headY, endY] = grayAreaAttributes[i];
+            let grayArea = this.grayAreaStrategy.create(x, headY, endY);
+            this.grayRoot.appendChild(grayArea);
+        }
+    }
+
+    createGrayArea(x, headY, endY) {
         let grayArea = this.grayAreaStrategy.create(300, 1175, 1295);
         this.grayRoot.appendChild(grayArea);
         // pass;
     }
 
-    createBrace(x, y, ifDashed=false){
+    createBraceByCoordiante(x, y, ifDashed=false){ //I think by coordinate should disappear not here
         let brace = this.braceShapeStrategy.create(x, y, ifDashed);
         this.svgRoot.appendChild(brace);
     }
@@ -363,8 +380,13 @@ class SVGMeasureManager {
 
 
 // Using the class
+// document.addEventListener("DOMContentLoaded", () => {
+//     const systemManager = new SVGSystemManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
+// });
 document.addEventListener("DOMContentLoaded", () => {
-    const measureManager = new SVGMeasureManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
+    window.measureManager = new SVGMeasureManager('svgRoot');
+    // maybe I need to construct a for loop before the overrides if statements
+    // only for overrides; should have an if statement here: 
     measureManager.createPolylines([
         [6, "", false],
         [11, "dashed-line", false],
@@ -380,7 +402,8 @@ document.addEventListener("DOMContentLoaded", () => {
         [1, "dotted-line", false]
     ], 855, true);
 
-    measureManager.createXs([
+    // I think just keep it as if it were 
+    measureManager.createListStarsBySymbolic([
         [1, 9],
         [1, 10],
         [1, 12],
@@ -398,17 +421,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ]);
 
-    // measureManager.createGrayArea();
-    measureManager.createGrayAreasByCoordiante([
+    // measureManager.createGrayArea(); where should I put the method and how do I make it talk to each other?
+    // I think I should save the symbolic and exact (relative) coordinates of stars as dictionaries;
+    // and those dictionnaries should be created in the constructor function, since stars and brackets will be givem in the XML
+    // and the XML come beforehand 
+    // so at the end of each loop, I need to object.coordinateSet = {} to empty it out nonono dont do it, create a list and save the instances to them
+    measureManager.createListGrayAreasByCoordiante([
         [300, 1175, 1295],
         [300 + 65, 855 + 40*2, 855 + 40*7],
         [300 + 65 *2, 855 + 40*3, 855 + 40*5],
         [300 + 65 *3, 855 + 40*3, 855 + 40*8]
     ]);
 
-    measureManager.createBrace(300 + 65 *3 + 15, 855 + 40*3 - 60);
+    // similarly, I need redefine another function here to manage so it uses symbolic coordinate 
+    measureManager.createBraceByCoordiante(300 + 65 *3 + 15, 855 + 40*3 - 60);
 
     let outterFactory = new SVGElementFactory("http://www.w3.org/2000/svg");
+
+    // I think those two instances could be mount to the measure class just need to create 3 instances of TextStrategy instead of one
     const boxTextManager = new TextStrategy(outterFactory);
     boxTextManager.fontWeight = "bold"; 
     boxTextManager.textAnchor = "middle";
