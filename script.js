@@ -1,11 +1,16 @@
 let globalSystemXStart = 265;
 let globalSystemYStart = 855;
+
 let globalBeatDistance = 65;
 let globalLineDistance = 40;
 let globalVerticalLineSpan = 35;
 let globalHorizontalLineSpan = 35; //hidden border
 let globalStarX = globalSystemXStart + globalVerticalLineSpan;
 let globalStarY = globalSystemYStart;
+
+let globalOffsetValue = 30;
+let globalVerticalBracketAdditionValue = 5;
+
 let globalStafflineIncrementX = 290;
 
 
@@ -70,6 +75,17 @@ class TextStrategy {
         return text;
     }
 }
+
+class BoxTextStrategy extends TextStrategy {
+    constructor(factory) {
+        super(factory); // Calls the constructor of TextStrategy
+        // Override specific properties for BoxTextStrategy
+        this.fontWeight = "bold";
+        this.textAnchor = "middle";
+        this.fontSize = 30;
+    }
+}
+
 
 class CrossShapeStrategy {
     constructor(factory) {
@@ -206,9 +222,11 @@ class SVGSystemManager {
         this.braceShapeStrategy = new BraceShapeStrategy(this.factory);
 
         // other attributes to be redefined
-        this.stafflineIncrementX = globalStafflineIncrementX;
         this.starXStart = globalSystemXStart;
         this.starYStart = globalSystemYStart;
+
+
+        this.stafflineIncrementX = globalStafflineIncrementX;
 
         this.idMap = {};
         tones.forEach((item, index) => {
@@ -266,31 +284,52 @@ class SVGSystemManager {
     }
 }
 
+class GeneralSVGMeasureManager {
+    constructor(svgRootId){
+
+    }
+}
 class SVGMeasureManager {
-    constructor(svgRootId, measureXStart=265, measureYStart=855) {
+    constructor(svgRootId, measureXStart=globalSystemXStart, measureYStart=globalSystemYStart) {
         this.svgNS = "http://www.w3.org/2000/svg";
         this.svgRoot = document.getElementById(svgRootId);
         this.grayRoot = document.getElementById("grayRoot");
         // using the 3 classes above 
         this.factory = new SVGElementFactory(this.svgNS);
 
-        // instance definitions 
+        // instance definitions those can actually be raised to the system class
         this.singlePolylineStrategy = new PolylineStrategy(this.factory); //this origial one has to be taken out
         this.crossShapeStrategy = new CrossShapeStrategy(this.factory);
         this.grayAreaStrategy = new GrayAreaStrategy(this.factory);
         this.braceShapeStrategy = new BraceShapeStrategy(this.factory);
+        this.boxTextManager = new TextStrategy(this.factory);
+        this.mmTextManager = new TextStrategy(this.factory);
+        this.metaTextManager = new TextStrategy(this.factory);
 
         // other attributes to be redefined
-        this.stafflineIncrementX = globalStafflineIncrementX;
+
         this.measureXStart = measureXStart;
         this.measureYStart = measureYStart;
-        this.starXStart = measureXStart + globalVerticalLineSpan;
+
+        this.beatDistance = globalBeatDistance;
+        this.lineDistance = globalLineDistance;
+        this.verticalLineSpan = globalVerticalLineSpan;
+        this.horizontalLineSpan = globalHorizontalLineSpan; //hidden border
+        this.starXStart = measureXStart + this.verticalLineSpan;
         this.starYStart = measureYStart;
+        this.stafflineIncrementX = globalStafflineIncrementX;
         // the above non used
 
-        // attributes that only become available with XML examined
-        this.ListStars = [];
+        // attributes that only become available with XML examined; XML provided in the System stuff;
+        this.ListStars = []; //gonna be changed to 2d array
+        this.ListStarsCoordinates = []; //unused
         this.ListGrayAreas = [];
+        this.measureDescription = {};
+    }
+
+    verticalShifting(nbeat, bracketList, offsetList) { //I suppose this is going to be a method in the System function
+        pass; //the idea: for each measure: go with the stars, check if there is offset, THEN set star, THEN, check if there is brackett;
+        // after gathering all the relative coordinates, they will be sent to the top to determine the this.measureYStart
     }
 
     overFlow() {
@@ -301,11 +340,11 @@ class SVGMeasureManager {
         pass;
     }
 
-    createListStarsBySymbolic() {
+    createListStarsBySymbolic() { //as coordinates are defined in the upper class, perhaps? this one will probably be replaced all by numerical
         this.ListStars.forEach(([xOffset, yOffset]) => {
-            let x = this.starXStart + (xOffset - 1) * globalBeatDistance;
-            let y = this.starYStart + (yOffset - 1) * globalLineDistance;
-            // this.createStar(x, y); below is the original createStar(x, y) function:
+            let x = this.starXStart + (xOffset - 1) * this.beatDistance;
+            let y = this.starYStart + (yOffset - 1) * this.lineDistance;
+            // this.createStar(x, y); below is the original createStar(x, y) function: I actually want it back
             let singleStar = this.crossShapeStrategy.create(x, y);
             this.svgRoot.appendChild(singleStar);
         });
@@ -321,7 +360,7 @@ class SVGMeasureManager {
 
     createPolylines(lineAttributes, startY=this.starYStart, includeNumber=false) {
         let y = startY;
-        let gap = globalLineDistance;
+        let gap = this.lineDistance;
         let numLines = lineAttributes.length;
 
         for (let i = 0; i < numLines; i++) {
@@ -352,16 +391,6 @@ class SVGMeasureManager {
         }
     }
 
-    // createGrayAreasByCoordiante(grayAreaAttributes) {//need to be changed or probably not
-    //     let numGrayAreas = grayAreaAttributes.length;
-    //     // consider overrides 
-    //     for (let i = 0; i < numGrayAreas; i++){
-    //         let [x, headY, endY] = grayAreaAttributes[i];
-    //         let grayArea = this.grayAreaStrategy.create(x, headY, endY);
-    //         this.grayRoot.appendChild(grayArea);
-    //     }
-    // }
-
     createGrayArea(x, headY, endY) { //probably delete this one too, actually useless
         let grayArea = this.grayAreaStrategy.create(300, 1175, 1295);
         this.grayRoot.appendChild(grayArea);
@@ -387,7 +416,7 @@ class SVGMeasureManager {
 //     const systemManager = new SVGSystemManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
 // });
 document.addEventListener("DOMContentLoaded", () => {
-    window.measureManager = new SVGMeasureManager('svgRoot', 265, 855);
+    window.measureManager = new SVGMeasureManager('svgRoot', globalSystemXStart, globalSystemYStart);
     // maybe I need to construct a for loop before the overrides if statements
     // only for overrides; should have an if statement here: 
     measureManager.createPolylines([
@@ -405,7 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
         [1, "dotted-line", false]
     ], 855, true);
 
-    // I think just keep it as if it were 
+    // I think just keep it as if it were, well, initializing, for all measures and all beats, it could be provided as once; if no stars, insert a bracket function somewhere
     measureManager.ListStars = [
         [1, 9],
         [1, 10],
@@ -450,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    measureManager.ListGrayAreas =[
+    measureManager.ListGrayAreas = [
         [300, 1175, 1295],
         [300 + 65, 855 + 40*2, 855 + 40*7],
         [300 + 65 *2, 855 + 40*3, 855 + 40*5],
@@ -467,16 +496,32 @@ document.addEventListener("DOMContentLoaded", () => {
     // ]);
 
     // similarly, I need redefine another function here to manage so it uses symbolic coordinate 
+    // MANUAL here, and sent back to xml such configuration;
     measureManager.createBraceByCoordiante(300 + 65 *3 + 15, 855 + 40*3 - 60);
 
     let outterFactory = new SVGElementFactory("http://www.w3.org/2000/svg");
 
     // I think those two instances could be mount to the measure class just need to create 3 instances of TextStrategy instead of one
-    const boxTextManager = new TextStrategy(outterFactory);
-    boxTextManager.fontWeight = "bold"; 
-    boxTextManager.textAnchor = "middle";
-    boxTextManager.fontSize = 30;
-    let measureText = boxTextManager.create(330,405,"25");
+    let measureDescription = {
+        "box": "25",
+        "mm": "mm.89-98",
+        "msc": [
+            ["Aggregate", "9/12"],
+            ["Octat. III", "7/8"],
+            ["Diat. region", "7/7"]
+        ]
+    };
+
+
+    // const boxTextManager = new TextStrategy(outterFactory);
+    // boxTextManager.fontWeight = "bold"; 
+    // boxTextManager.textAnchor = "middle";
+    // boxTextManager.fontSize = 30;
+    // let measureText = boxTextManager.create(330,405,"25");
+    // measureManager.svgRoot.appendChild(measureText);
+
+    const boxTextManager = new BoxTextStrategy(outterFactory);
+    let measureText = boxTextManager.create(330, 405, measureDescription["box"]);
     measureManager.svgRoot.appendChild(measureText);
 
     const mmTextManager = new TextStrategy(outterFactory);
