@@ -18,9 +18,9 @@ let globalStafflineIncrementX = 290;
 //     svgRoot.appendChild(textElement);
 // }
 
-function createAndAppendText(manager, svgRoot, ...args) { //next step, take off the methodname and root
+function createAndAppendText(strategy, svgRoot, ...args) { //next step, take off the methodname and root
     let methodName="create";
-    let textElement = manager[methodName].apply(manager, args);
+    let textElement = strategy[methodName].apply(strategy, args);
     svgRoot.appendChild(textElement);
 }
 
@@ -325,7 +325,8 @@ class GeneralSVGMeasureManager {
 class SVGMeasureManager {
     constructor(svgRootId, measureXStart=globalSystemXStart, measureYStart=globalSystemYStart) {
         this.svgNS = "http://www.w3.org/2000/svg";
-        this.svgRoot = document.getElementById(svgRootId);
+        this.svgRoot = document.getElementById(svgRootId); //I have got to reassign those IDs to different sections
+        this.measureRoot = this.svgRoot;
         this.grayRoot = document.getElementById("grayRoot");
         // using the 3 classes above 
         this.factory = new SVGElementFactory(this.svgNS);
@@ -335,9 +336,10 @@ class SVGMeasureManager {
         this.crossShapeStrategy = new CrossShapeStrategy(this.factory);
         this.grayAreaStrategy = new GrayAreaStrategy(this.factory);
         this.braceShapeStrategy = new BraceShapeStrategy(this.factory);
-        this.boxTextManager = new TextStrategy(this.factory);
-        this.mmTextManager = new TextStrategy(this.factory);
-        this.metaTextManager = new TextStrategy(this.factory);
+        this.boxTextStrategy = new BoxTextStrategy(this.factory);
+        this.mmTextStrategy = new MmTextStrategy(this.factory);
+        this.leftMscTextManager = new LeftMscTextStrategy(this.factory);
+        this.rightMscTextManager = new RightMscTextStrategy(this.factory);
 
         // other attributes to be redefined
 
@@ -435,12 +437,28 @@ class SVGMeasureManager {
         this.svgRoot.appendChild(brace);
     }
 
+    createAndAppendText(manager, ...args) {
+        let textElement = manager.create(...args); // Directly call the create method using rest parameters
+        this.measureRoot.appendChild(textElement);
+    }
+
+    createAllMeasureTexts() {
+        this.createAndAppendText(this.boxTextStrategy, 330, 405, this.measureDescription["box"]);
+        this.createAndAppendText(this.mmTextStrategy, 300, 460, this.measureDescription["mm"]);
+
+        this.measureDescription["msc"].forEach((item, index) => {
+            this.createAndAppendText(this.leftMscTextManager, 300, 460 + 10 + 40 * (index + 1), item[0]);
+            this.createAndAppendText(this.rightMscTextManager, 500, 460 + 10 + 40 * (index + 1), item[1]);
+        });
+    }
+
     changeClass(lineId, newClass) {
         let line = document.getElementById(lineId);
         if (line) {
             line.setAttribute("class", newClass);
         }
     }
+
 }
 
 
@@ -532,10 +550,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // MANUAL here, and sent back to xml such configuration;
     measureManager.createBraceByCoordiante(300 + 65 *3 + 15, 855 + 40*3 - 60);
 
-    let outterFactory = new SVGElementFactory("http://www.w3.org/2000/svg");
+    // let outterFactory = new SVGElementFactory("http://www.w3.org/2000/svg");
 
     // I think those two instances could be mount to the measure class just need to create 3 instances of TextStrategy instead of one
-    let measureDescription = {
+    // let measureDescription = {
+    //     "box": "25",
+    //     "mm": "mm.89-98",
+    //     "msc": [
+    //         ["Aggregate", "9/12"],
+    //         ["Octat. III", "7/8"],
+    //         ["Diat. region", "7/7"]
+    //     ]
+    // };
+
+
+    measureManager.measureDescription = {
         "box": "25",
         "mm": "mm.89-98",
         "msc": [
@@ -545,22 +574,25 @@ document.addEventListener("DOMContentLoaded", () => {
         ]
     };
 
+    measureManager.createAllMeasureTexts();
+
+
     // const methodName = 'create';
 
-    // Box Text Manager
-    const boxTextManager = new BoxTextStrategy(outterFactory);
-    createAndAppendText(boxTextManager, measureManager.svgRoot, 330, 405, measureDescription["box"]);
+    // // Box Text Manager
+    // const boxTextManager = new BoxTextStrategy(outterFactory);
+    // createAndAppendText(boxTextManager, measureManager.svgRoot, 330, 405, measureDescription["box"]);
 
-    // MM Text Manager
-    const mmTextManager = new MmTextStrategy(outterFactory);
-    createAndAppendText(mmTextManager, measureManager.svgRoot, 300, 460, measureDescription["mm"]);
+    // // MM Text Manager
+    // const mmTextManager = new MmTextStrategy(outterFactory);
+    // createAndAppendText(mmTextManager, measureManager.svgRoot, 300, 460, measureDescription["mm"]);
 
-    const leftMetaTextManager = new LeftMscTextStrategy(outterFactory);
-    const rightMetaTextManager = new RightMscTextStrategy(outterFactory);
+    // const leftMetaTextManager = new LeftMscTextStrategy(outterFactory);
+    // const rightMetaTextManager = new RightMscTextStrategy(outterFactory);
 
-    measureDescription["msc"].forEach((item, index) => {
-        createAndAppendText(leftMetaTextManager, measureManager.svgRoot, 300, 460 + 10 + 40 * (index + 1), item[0]);
-        createAndAppendText(rightMetaTextManager, measureManager.svgRoot, 500, 460 + 10 + 40 * (index + 1), item[1]);
-    });
+    // measureDescription["msc"].forEach((item, index) => {
+    //     createAndAppendText(leftMetaTextManager, measureManager.svgRoot, 300, 460 + 10 + 40 * (index + 1), item[0]);
+    //     createAndAppendText(rightMetaTextManager, measureManager.svgRoot, 500, 460 + 10 + 40 * (index + 1), item[1]);
+    // });
 
 });
