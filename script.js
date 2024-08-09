@@ -3,6 +3,7 @@ let globalSystemYStart = 855;
 let globalBeatDistance = 65;
 let globalLineDistance = 40;
 let globalVerticalLineSpan = 35;
+let globalHorizontalLineSpan = 35; //hidden border
 let globalStarX = globalSystemXStart + globalVerticalLineSpan;
 let globalStarY = globalSystemYStart;
 let globalStafflineIncrementX = 290;
@@ -286,6 +287,9 @@ class SVGMeasureManager {
         this.starXStart = measureXStart + globalVerticalLineSpan;
         this.starYStart = measureYStart;
         // the above non used
+
+        // attributes that only become available with XML examined
+        this.ListGrayAreas = [];
     }
 
     overFlow() {
@@ -336,27 +340,28 @@ class SVGMeasureManager {
 
     // gray area group 
 
-    createListGrayAreasByCoordiante(grayAreaAttributes) {
-        let numGrayAreas = grayAreaAttributes.length;
+    createListGrayAreasByCoordiante() { // gona keep it specifically for coordinate unless I can fork an array
+        // let numGrayAreas = grayAreaAttributes.length;
+        let numGrayAreas = this.ListGrayAreas.length;
         // consider overrides 
         for (let i = 0; i < numGrayAreas; i++){
-            let [x, headY, endY] = grayAreaAttributes[i];
+            let [x, headY, endY] = this.ListGrayAreas[i];
             let grayArea = this.grayAreaStrategy.create(x, headY, endY);
             this.grayRoot.appendChild(grayArea);
         }
     }
 
-    createGrayAreasByCoordiante(grayAreaAttributes) {
-        let numGrayAreas = grayAreaAttributes.length;
-        // consider overrides 
-        for (let i = 0; i < numGrayAreas; i++){
-            let [x, headY, endY] = grayAreaAttributes[i];
-            let grayArea = this.grayAreaStrategy.create(x, headY, endY);
-            this.grayRoot.appendChild(grayArea);
-        }
-    }
+    // createGrayAreasByCoordiante(grayAreaAttributes) {//need to be changed or probably not
+    //     let numGrayAreas = grayAreaAttributes.length;
+    //     // consider overrides 
+    //     for (let i = 0; i < numGrayAreas; i++){
+    //         let [x, headY, endY] = grayAreaAttributes[i];
+    //         let grayArea = this.grayAreaStrategy.create(x, headY, endY);
+    //         this.grayRoot.appendChild(grayArea);
+    //     }
+    // }
 
-    createGrayArea(x, headY, endY) {
+    createGrayArea(x, headY, endY) { //probably delete this one too, actually useless
         let grayArea = this.grayAreaStrategy.create(300, 1175, 1295);
         this.grayRoot.appendChild(grayArea);
         // pass;
@@ -400,6 +405,23 @@ document.addEventListener("DOMContentLoaded", () => {
     ], 855, true);
 
     // I think just keep it as if it were 
+    // measureManager.ListGrayAreas = [
+    //     [1, 9],
+    //     [1, 10],
+    //     [1, 12],
+    //     [2, 3],
+    //     [2, 5],
+    //     [2, 7],
+    //     [2, 8],
+    //     [3, 4],
+    //     [3, 6],
+    //     [4, 4],
+    //     [4, 6],
+    //     [4, 7],
+    //     [4, 8],
+    //     [4, 9],
+
+    // ];
     measureManager.createListStarsBySymbolic([
         [1, 9],
         [1, 10],
@@ -423,12 +445,24 @@ document.addEventListener("DOMContentLoaded", () => {
     // and those dictionnaries should be created in the constructor function, since stars and brackets will be givem in the XML
     // and the XML come beforehand 
     // so at the end of each loop, I need to object.coordinateSet = {} to empty it out nonono dont do it, create a list and save the instances to them
-    measureManager.createListGrayAreasByCoordiante([
+
+
+
+    measureManager.ListGrayAreas =[
         [300, 1175, 1295],
         [300 + 65, 855 + 40*2, 855 + 40*7],
         [300 + 65 *2, 855 + 40*3, 855 + 40*5],
         [300 + 65 *3, 855 + 40*3, 855 + 40*8]
-    ]);
+    ];
+
+    measureManager.createListGrayAreasByCoordiante();
+
+    // measureManager.createListGrayAreasByCoordiante([
+    //     [300, 1175, 1295],
+    //     [300 + 65, 855 + 40*2, 855 + 40*7],
+    //     [300 + 65 *2, 855 + 40*3, 855 + 40*5],
+    //     [300 + 65 *3, 855 + 40*3, 855 + 40*8]
+    // ]);
 
     // similarly, I need redefine another function here to manage so it uses symbolic coordinate 
     measureManager.createBraceByCoordiante(300 + 65 *3 + 15, 855 + 40*3 - 60);
