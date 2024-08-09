@@ -289,6 +289,7 @@ class SVGMeasureManager {
         // the above non used
 
         // attributes that only become available with XML examined
+        this.ListStars = [];
         this.ListGrayAreas = [];
     }
 
@@ -300,8 +301,8 @@ class SVGMeasureManager {
         pass;
     }
 
-    createListStarsBySymbolic(xAttributes) {
-        xAttributes.forEach(([xOffset, yOffset]) => {
+    createListStarsBySymbolic() {
+        this.ListStars.forEach(([xOffset, yOffset]) => {
             let x = this.starXStart + (xOffset - 1) * globalBeatDistance;
             let y = this.starYStart + (yOffset - 1) * globalLineDistance;
             // this.createStar(x, y); below is the original createStar(x, y) function:
@@ -320,7 +321,7 @@ class SVGMeasureManager {
 
     createPolylines(lineAttributes, startY=this.starYStart, includeNumber=false) {
         let y = startY;
-        let gap = 40;
+        let gap = globalLineDistance;
         let numLines = lineAttributes.length;
 
         for (let i = 0; i < numLines; i++) {
@@ -405,24 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ], 855, true);
 
     // I think just keep it as if it were 
-    // measureManager.ListGrayAreas = [
-    //     [1, 9],
-    //     [1, 10],
-    //     [1, 12],
-    //     [2, 3],
-    //     [2, 5],
-    //     [2, 7],
-    //     [2, 8],
-    //     [3, 4],
-    //     [3, 6],
-    //     [4, 4],
-    //     [4, 6],
-    //     [4, 7],
-    //     [4, 8],
-    //     [4, 9],
-
-    // ];
-    measureManager.createListStarsBySymbolic([
+    measureManager.ListStars = [
         [1, 9],
         [1, 10],
         [1, 12],
@@ -438,7 +422,25 @@ document.addEventListener("DOMContentLoaded", () => {
         [4, 8],
         [4, 9],
 
-    ]);
+    ];
+    measureManager.createListStarsBySymbolic();
+    // measureManager.createListStarsBySymbolic([
+    //     [1, 9],
+    //     [1, 10],
+    //     [1, 12],
+    //     [2, 3],
+    //     [2, 5],
+    //     [2, 7],
+    //     [2, 8],
+    //     [3, 4],
+    //     [3, 6],
+    //     [4, 4],
+    //     [4, 6],
+    //     [4, 7],
+    //     [4, 8],
+    //     [4, 9],
+
+    // ]);
 
     // measureManager.createGrayArea(); where should I put the method and how do I make it talk to each other?
     // I think I should save the symbolic and exact (relative) coordinates of stars as dictionaries;
