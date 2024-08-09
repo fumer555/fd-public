@@ -550,20 +550,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // MANUAL here, and sent back to xml such configuration;
     measureManager.createBraceByCoordiante(300 + 65 *3 + 15, 855 + 40*3 - 60);
 
-    // let outterFactory = new SVGElementFactory("http://www.w3.org/2000/svg");
-
-    // I think those two instances could be mount to the measure class just need to create 3 instances of TextStrategy instead of one
-    // let measureDescription = {
-    //     "box": "25",
-    //     "mm": "mm.89-98",
-    //     "msc": [
-    //         ["Aggregate", "9/12"],
-    //         ["Octat. III", "7/8"],
-    //         ["Diat. region", "7/7"]
-    //     ]
-    // };
-
-
     measureManager.measureDescription = {
         "box": "25",
         "mm": "mm.89-98",
@@ -575,24 +561,5 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     measureManager.createAllMeasureTexts();
-
-
-    // const methodName = 'create';
-
-    // // Box Text Manager
-    // const boxTextManager = new BoxTextStrategy(outterFactory);
-    // createAndAppendText(boxTextManager, measureManager.svgRoot, 330, 405, measureDescription["box"]);
-
-    // // MM Text Manager
-    // const mmTextManager = new MmTextStrategy(outterFactory);
-    // createAndAppendText(mmTextManager, measureManager.svgRoot, 300, 460, measureDescription["mm"]);
-
-    // const leftMetaTextManager = new LeftMscTextStrategy(outterFactory);
-    // const rightMetaTextManager = new RightMscTextStrategy(outterFactory);
-
-    // measureDescription["msc"].forEach((item, index) => {
-    //     createAndAppendText(leftMetaTextManager, measureManager.svgRoot, 300, 460 + 10 + 40 * (index + 1), item[0]);
-    //     createAndAppendText(rightMetaTextManager, measureManager.svgRoot, 500, 460 + 10 + 40 * (index + 1), item[1]);
-    // });
 
 });
