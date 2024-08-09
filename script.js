@@ -561,8 +561,8 @@ document.addEventListener("DOMContentLoaded", () => {
     metaTextManager.fontWeight = "bold";
     let metaText1 = metaTextManager.create(300,460+50,"Aggregate");
     measureManager.svgRoot.appendChild(metaText1);
-    // let metaText2 = metaTextManager.create(300,460+90,"Octat. III");
-    // measureManager.svgRoot.appendChild(metaText2);
+    let metaText2 = metaTextManager.create(300,460+90,"Octat. III");
+    measureManager.svgRoot.appendChild(metaText2);
     let metaText3 = metaTextManager.create(300,460+130,"Diat. region");
     measureManager.svgRoot.appendChild(metaText3);
     metaTextManager.textAnchor = "end";
