@@ -13,18 +13,6 @@ let globalVerticalBracketAdditionValue = 5;
 
 let globalStafflineIncrementX = 290;
 
-// function createAndAppendText(manager, x, y, text, svgRoot) {
-//     let textElement = manager.create(x, y, text);
-//     svgRoot.appendChild(textElement);
-// }
-
-function createAndAppendText(strategy, svgRoot, ...args) { //next step, take off the methodname and root
-    let methodName="create";
-    let textElement = strategy[methodName].apply(strategy, args);
-    svgRoot.appendChild(textElement);
-}
-
-
 class SVGElementFactory {
     constructor(svgNS) {
         this.svgNS = svgNS;
@@ -437,8 +425,8 @@ class SVGMeasureManager {
         this.svgRoot.appendChild(brace);
     }
 
-    createAndAppendText(manager, ...args) {
-        let textElement = manager.create(...args); // Directly call the create method using rest parameters
+    createAndAppendText(strategy, ...args) {
+        let textElement = strategy.create(...args); // Directly call the create method using rest parameters
         this.measureRoot.appendChild(textElement);
     }
 
