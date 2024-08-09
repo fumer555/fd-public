@@ -41,6 +41,7 @@ class LineStrategy {
     }
 }
 
+// here all the titles 
 class TextStrategy {
     constructor(factory) {
         this.factory = factory;
@@ -106,7 +107,6 @@ class RightMscTextStrategy extends TextStrategy {
         this.textAnchor = "end";
     }
 }
-
 
 class CrossShapeStrategy {
     constructor(factory) {
@@ -310,6 +310,7 @@ class GeneralSVGMeasureManager {
 
     }
 }
+
 class SVGMeasureManager {
     constructor(svgRootId, measureXStart=globalSystemXStart, measureYStart=globalSystemYStart) {
         this.svgNS = "http://www.w3.org/2000/svg";
@@ -448,7 +449,6 @@ class SVGMeasureManager {
     }
 
 }
-
 
 // Using the class
 // document.addEventListener("DOMContentLoaded", () => {
