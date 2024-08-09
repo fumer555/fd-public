@@ -36,15 +36,16 @@
     }
 
   </style>
-
+<circle cx="265" cy="855" r="10" fill="red" />
   <!-- test  -->
   <!-- <circle cx="300" cy="375" r="10" fill="red" />
+  
   <circle cx="330" cy="405" r="10" fill="red" /> -->
 
+<!-- this going to be used for special cases  -->
   <clipPath id="round-top">
     <rect x="1280" y="175" width="80" height="180" rx="40" ry="40" />
   </clipPath>
-
   <rect x="1280" y="175" width="80" height="180" fill="#cccccc" clip-path="url(#round-top)" />
   <rect x="1280" y="275" width="80" height="80" fill="#cccccc" />
 

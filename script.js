@@ -1,8 +1,9 @@
-let globalSystemXStart = 300;
+let globalSystemXStart = 265;
 let globalSystemYStart = 855;
 let globalBeatDistance = 65;
 let globalLineDistance = 40;
-let globalStarX = globalSystemXStart + globalBeatDistance;
+let globalVerticalLineSpan = 35;
+let globalStarX = globalSystemXStart + globalVerticalLineSpan;
 let globalStarY = globalSystemYStart;
 let globalStafflineIncrementX = 290;
 
@@ -265,7 +266,7 @@ class SVGSystemManager {
 }
 
 class SVGMeasureManager {
-    constructor(svgRootId, measureXStart=300, measureYStart=855) {
+    constructor(svgRootId, measureXStart=265, measureYStart=855) {
         this.svgNS = "http://www.w3.org/2000/svg";
         this.svgRoot = document.getElementById(svgRootId);
         this.grayRoot = document.getElementById("grayRoot");
@@ -282,8 +283,9 @@ class SVGMeasureManager {
         this.stafflineIncrementX = globalStafflineIncrementX;
         this.measureXStart = measureXStart;
         this.measureYStart = measureYStart;
-        this.starXStart = measureXStart + globalBeatDistance;
+        this.starXStart = measureXStart + globalVerticalLineSpan;
         this.starYStart = measureYStart;
+        // the above non used
     }
 
     createStar(x, y) {
@@ -300,11 +302,12 @@ class SVGMeasureManager {
     }
 
     createListStarsBySymbolic(xAttributes) { //going from symbolic to numerical, this is pretty brutal, needs to be dynamic
-        const xStart = 300;
-        const yStart = 855;
+        // const xStart = 300;
+        // const yStart = 855;
+        // this.starXStart = 300;
         xAttributes.forEach(([xOffset, yOffset]) => {
-            const x = xStart + (xOffset - 1) * 65;
-            const y = yStart + (yOffset - 1) * 40;
+            const x = this.starXStart + (xOffset - 1) * globalBeatDistance;
+            const y = this.starYStart + (yOffset - 1) * globalLineDistance;
             this.createStar(x, y);
         });
     }
@@ -384,7 +387,7 @@ class SVGMeasureManager {
 //     const systemManager = new SVGSystemManager('svgRoot', [6, 11, 4, 9, 2, 7, 0, 5, 10, 3, 8, 1]);
 // });
 document.addEventListener("DOMContentLoaded", () => {
-    window.measureManager = new SVGMeasureManager('svgRoot');
+    window.measureManager = new SVGMeasureManager('svgRoot', 265, 855);
     // maybe I need to construct a for loop before the overrides if statements
     // only for overrides; should have an if statement here: 
     measureManager.createPolylines([
