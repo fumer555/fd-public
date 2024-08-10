@@ -41,6 +41,7 @@
         }
         .side-by-side button {
             flex: 1;
+            margin-right: 5px; /* Adds some spacing between the inputs */
         }
 
         .input-only-side-by-side,
@@ -131,6 +132,12 @@
         <input id="starPair1" placeholder="Enter first star ID e.g., 1 1 11">
         <input id="starPair2" placeholder="Enter second star ID e.g., 1 1 4">
         <button onclick="addCurvedBrace()">Add Curved Brace</button>
+    </div>
+    <div class="side-by-side">
+        <input id="beatPair1" placeholder="Enter first beat ID e.g., 1 1">
+        <input id="beatPair2" placeholder="Enter second beat ID e.g., 1 3">
+        <button onclick="addHorizontalBrace()">Add Horizontal Brace</button>
+        <button style="background-color: #f44336" onclick="addOffset()">Add Offset</button>
     </div>
     <input id="fileName" placeholder="Enter filename (optional)">
     <button onclick="downloadXML()">Download XML</button>

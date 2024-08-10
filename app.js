@@ -42,7 +42,9 @@ function addMeasure() {
   if (beatCount) {
       measures.push({ 
         beatCount, 
-        braces: [],  
+        braces: [],
+        hBraces: [],
+        offsets: [],
         measureDescription: measureDescription
     });
 
@@ -71,11 +73,50 @@ function addCurvedBrace() {
   const star1 = findStar(starID1);
   const star2 = findStar(starID2);
 
+  document.getElementById('starPair1').value = '';
+  document.getElementById('starPair2').value = '';
+
   if (star1 && star2 && star1.measureIndex === star2.measureIndex && star1.beatIndex === star2.beatIndex) {
-      measures[star1.measureIndex].braces.push({ star1: starID1, star2: starID2, bracketType: "standard" });
+      measures[star1.measureIndex].braces.push({ star1: starID1, star2: starID2, bracketType: "standard", ifOverride: "false" });
       updateXMLPreview();
   } else {
       alert("Stars must belong to the same beat.");
+  }
+}
+
+function addHorizontalBrace() {
+  const beatID1 = document.getElementById('beatPair1').value;
+  const beatID2 = document.getElementById('beatPair2').value;
+  // Find measure and beat index for the stars, validate if they belong to the same beat
+  const beat1 = findBeat(beatID1);
+  const beat2 = findBeat(beatID2);
+
+  document.getElementById('beatPair1').value = '';
+  document.getElementById('beatPair2').value = '';
+
+  if (beat1 && beat2 && beat1.measureIndex === beat2.measureIndex) {
+      measures[beat1.measureIndex].hBraces.push({ beat1: beatID1, beat2: beatID2, bracketType: "standard", ifOverride: "false" });
+      updateXMLPreview();
+  } else {
+      alert("Beats must belong to the same measure.");
+  }
+}
+
+function addOffset() {
+  const beatID1 = document.getElementById('beatPair1').value;
+  const beatID2 = document.getElementById('beatPair2').value;
+  // Find measure and beat index for the stars, validate if they belong to the same beat
+  const beat1 = findBeat(beatID1);
+  const beat2 = findBeat(beatID2);
+
+  document.getElementById('beatPair1').value = '';
+  document.getElementById('beatPair2').value = '';
+
+  if (beat1 && beat2 && beat1.measureIndex === beat2.measureIndex) {
+      measures[beat1.measureIndex].offsets.push({ beat1: beatID1, beat2: beatID2, offsetType: "standard", ifOverride: "false" });
+      updateXMLPreview();
+  } else {
+      alert("Beats must belong to the same measure.");
   }
 }
 
@@ -85,6 +126,16 @@ function findStar(starID) {
   beatIndex--;
   if (measures[measureIndex] && measures[measureIndex].beatCount >= beatIndex) {
       return { measureIndex, beatIndex, line };
+  }
+  return null;
+}
+
+function findBeat(measureID) {
+  let [measureIndex, beatIndex] = measureID.split(' ').map(Number);
+  measureIndex--; // Adjust index as array is zero-based
+  beatIndex--;
+  if (measures[measureIndex] && measures[measureIndex].beatCount >= beatIndex) {
+      return { measureIndex, beatIndex };
   }
   return null;
 }
@@ -119,9 +170,13 @@ ${Array.from({length: measure.beatCount}, (_, bIndex) => `              <beat n=
 ${lines}
               </beat>
               <setLabel beat="${bIndex + 1}" place="above"></setLabel>
-              <!-- optional vertical braces -->
+              <!-- optional vertical braces annotated beat-wise -->
 ${renderVerticalBraces(measure.braces, mIndex, bIndex)}`
               ).join('\n')}
+              <!-- optional offsets -->
+${renderOffsets(measure.offsets, mIndex)}
+              <!-- optional horizontal braces -->
+${renderHorizontalBraces(measure.hBraces, mIndex)}
 ${renderMeasureDescription(measure.measureDescription)}
             </measure>`
             ).join('\n')}
@@ -134,26 +189,21 @@ ${renderMeasureDescription(measure.measureDescription)}
 }
 
 
-function renderHorizontalBraces(braces, measureIndex, beatIndex) {//unused yet
-  return braces.filter(brace => brace.star1.startsWith(`${measureIndex + 1} ${beatIndex + 1}`) && brace.star2.startsWith(`${measureIndex + 1} ${beatIndex + 1}`))
-      .map(brace => `              <horizontalBrace star1="${brace.star1}" star2="${brace.star2}" bracketType="${brace.bracketType}"></curvedBrace>`).join('\n');
+function renderHorizontalBraces(hBraces, measureIndex) {//unused yet
+  return hBraces.filter(hBrace => hBrace.beat1.startsWith(`${measureIndex + 1}`) && hBrace.beat2.startsWith(`${measureIndex + 1}`))
+      .map(hBrace => `              <hBrace beat1="${hBrace.beat1}" beat2="${hBrace.beat2}" bracketType="${hBrace.bracketType}" ifOverride="${hBrace.ifOverride}"></hBrace>`).join('\n');
 }
 
+function renderOffsets(offsets, measureIndex) {//unused yet
+  return offsets.filter(offset => offset.beat1.startsWith(`${measureIndex + 1}`) && offset.beat2.startsWith(`${measureIndex + 1}`))
+      .map(offset => `              <offset beat1="${offset.beat1}" beat2="${offset.beat2}" offsetType="${offset.bracketType}" ifOverride="${offset.ifOverride}"/>`).join('\n');
+}
 
 function renderMeasureDescription(measureDescription) {
-  // 定义要添加的前置空格
   const indent = "              ";
-  
-  // 创建 <description> 标签起始部分
   let result = `${indent}<description>\n`;
-
-  // 添加 <box> 标签
   result += `${indent}  <box>${measureDescription.box}</box>\n`;
-
-  // 添加 <mm> 标签
   result += `${indent}  <mm>${measureDescription.mm}</mm>\n`;
-
-  // 添加 <msc> 标签及其内容
   result += `${indent}  <msc>\n`;
   measureDescription.msc.forEach(mscItem => {
       result += `${indent}    <div>\n`;
@@ -162,10 +212,7 @@ function renderMeasureDescription(measureDescription) {
       result += `${indent}    </div>\n`;
   });
   result += `${indent}  </msc>\n`;
-
-  // 结束 <description> 标签
   result += `${indent}</description>`;
-
   return result;
 }
 
