@@ -1,0 +1,566 @@
+<mei xmlns="http://www.music-encoding.org/ns/mei">
+  <meiHead>
+    <fileDesc>
+      <titleStmt>
+        <title type="main">Figure 4, "The Augurs of Spring", RN30, mm. 133-140</title>
+      </titleStmt>
+      <pubStmt/>
+    </fileDesc>
+  </meiHead>
+  <music>
+    <body>
+      <mdiv>
+        <score>
+          <scoreDef line-order="11 4 9 2 7 0 5 10 3 8 1 6">
+            <measureGrp>
+              <measureDef n="1" bcount="7"/>
+              <measureDef n="2" bcount="5"/>
+              <measureDef n="3" bcount="6"/>
+              <measureDef n="4" bcount="8"/>
+            </measureGrp>
+          </scoreDef>
+          <section>
+            <measure n="1">
+              <beat n="1">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="1" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="2">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="2" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="3">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="3" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="4">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="4" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="5">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="5" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="6">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="6" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="7">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="7" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <!-- optional offsets -->
+              <offset beat1="1 3" beat2="1 4" offsetType="undefined" ifOverride="false"/>
+              <!-- optional horizontal braces -->
+
+              <description>
+                <box>30</box>
+                <mm>mm. 133-135</mm>
+                <msc>
+                  <div>
+                    <leftMscText>Aggregate</leftMscText>
+                    <rightMscText>10/12_(11/12)</rightMscText>
+                  </div>
+                  <div>
+                    <leftMscText>Octat. I</leftMscText>
+                    <rightMscText>8/8</rightMscText>
+                  </div>
+                  <div>
+                    <leftMscText></leftMscText>
+                    <rightMscText></rightMscText>
+                  </div>
+                </msc>
+              </description>
+            </measure>
+            <measure n="2">
+              <beat n="1">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="1" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="2">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="2" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="3">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="3" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="4">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="4" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="5">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="5" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <!-- optional offsets -->
+              <offset beat1="2 3" beat2="2 4" offsetType="undefined" ifOverride="false"/>
+              <!-- optional horizontal braces -->
+
+              <description>
+                <box></box>
+                <mm>m. 136</mm>
+                <msc>
+                  <div>
+                    <leftMscText>Aggregate</leftMscText>
+                    <rightMscText>10/12_(11/12)</rightMscText>
+                  </div>
+                  <div>
+                    <leftMscText>Octat. II</leftMscText>
+                    <rightMscText>8/8</rightMscText>
+                  </div>
+                  <div>
+                    <leftMscText></leftMscText>
+                    <rightMscText></rightMscText>
+                  </div>
+                </msc>
+              </description>
+            </measure>
+            <measure n="3">
+              <beat n="1">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="1" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="2">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="2" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="3">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="3" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="4">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="4" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="5">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="5" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="6">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="6" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <!-- optional offsets -->
+              <offset beat1="3 3" beat2="3 4" offsetType="undefined" ifOverride="false"/>
+              <!-- optional horizontal braces -->
+
+              <description>
+                <box></box>
+                <mm>m. 137</mm>
+                <msc>
+                  <div>
+                    <leftMscText>Aggregate</leftMscText>
+                    <rightMscText>10/12</rightMscText>
+                  </div>
+                  <div>
+                    <leftMscText>Octat. I</leftMscText>
+                    <rightMscText>8/8</rightMscText>
+                  </div>
+                  <div>
+                    <leftMscText></leftMscText>
+                    <rightMscText></rightMscText>
+                  </div>
+                </msc>
+              </description>
+            </measure>
+            <measure n="4">
+              <beat n="1">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="1" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="2">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="2" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="3">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="3" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="4">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="4" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="5">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="5" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="6">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="6" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="7">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="7" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <beat n="8">
+                <star id="11" class="" ifStar="false" ifBracket="false"/>
+                <star id="4" class="" ifStar="false" ifBracket="false"/>
+                <star id="9" class="" ifStar="false" ifBracket="false"/>
+                <star id="2" class="" ifStar="false" ifBracket="false"/>
+                <star id="7" class="" ifStar="false" ifBracket="false"/>
+                <star id="0" class="" ifStar="false" ifBracket="false"/>
+                <star id="5" class="" ifStar="false" ifBracket="false"/>
+                <star id="10" class="" ifStar="false" ifBracket="false"/>
+                <star id="3" class="" ifStar="false" ifBracket="false"/>
+                <star id="8" class="" ifStar="false" ifBracket="false"/>
+                <star id="1" class="" ifStar="false" ifBracket="false"/>
+                <star id="6" class="" ifStar="false" ifBracket="false"/>
+              </beat>
+              <setLabel beat="8" place="above"></setLabel>
+              <!-- optional vertical braces annotated beat-wise -->
+
+              <!-- optional offsets -->
+              <offset beat1="4 3" beat2="4 4" offsetType="undefined" ifOverride="false"/>
+              <!-- optional horizontal braces -->
+
+              <description>
+                <box></box>
+                <mm>mm. 138-140</mm>
+                <msc>
+                  <div>
+                    <leftMscText>Aggregate</leftMscText>
+                    <rightMscText>10/12_(11/12)</rightMscText>
+                  </div>
+                  <div>
+                    <leftMscText>Octat. II</leftMscText>
+                    <rightMscText>8/8</rightMscText>
+                  </div>
+                  <div>
+                    <leftMscText></leftMscText>
+                    <rightMscText></rightMscText>
+                  </div>
+                </msc>
+              </description>
+            </measure>
+          </section>
+        </score>
+      </mdiv>
+    </body>
+  </music>
+</mei>
