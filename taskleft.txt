@@ -1,0 +1,14 @@
+curved brackett;
+
+words above the headNote;
+
+measure metadata;
+    use staff line left top as reference, 
+        it is on top, slightly below the measure bar
+        let globalSystemX = 300;
+        let globalSystemY = 855;
+
+
+11 4 9 2 7 0 5 10 3 8 1 6
+
+Figure 4, "The Augurs of Spring", RN30, mm. 133-140

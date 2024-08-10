@@ -42,14 +42,90 @@
         .side-by-side button {
             flex: 1;
         }
+
+        .input-only-side-by-side,
+        .pure-side-by-side {
+            display: flex;
+            width: 100%;
+        }
+
+        .input-only-side-by-side input,
+        .pure-side-by-side input,
+        .pure-side-by-side .split-input {
+            flex: 1;
+            margin-right: 10px;
+            box-sizing: border-box; /* Ensures padding and borders are included in the width */
+        }
+
+        .input-only-side-by-side > :last-child,
+        .pure-side-by-side > :last-child {
+            margin-right: 0;
+        }
+
+        .pure-side-by-side .split-input {
+            display: flex;
+            margin-right: 0; /* Ensures the split input aligns properly */
+        }
+
+        .pure-side-by-side .split-input input,
+        .pure-side-by-side .split-input button {
+            flex: 1;
+            box-sizing: border-box;
+        }
+
+        .pure-side-by-side .split-input button {
+            margin-left: 5px; /* Adjust this value if the button still misaligns */
+        }
+
+
+
     </style>
 </head>
 <body>
     <h1>MEI XML Creator</h1>
+    <div class="side-by-side">
     <input id="scoreTitle" placeholder="Enter score title e.g., Stravinsky">
     <input id="lineOrder" placeholder="Enter line order e.g., 11 4 9 2 7 0 5 10 3 8 1 6">
+    </div>
+
+    <div class="input-only-side-by-side">
+        <input id="leftMscText1" placeholder="Enter left Msc Text on the 1st line">
+        <input id="rightMscText1" placeholder="Enter right Msc Text on the 1st line">
+        <input id="boxText" placeholder="Enter box Text">
+    </div>
+    <div class="input-only-side-by-side">
+        <input id="leftMscText2" placeholder="Enter left Msc Text on the 2nd line">
+        <input id="rightMscText2" placeholder="Enter right Msc Text on the 2nd line">
+        <input id="mmText" placeholder="Enter mm. Text">
+    </div>
+    <div class="pure-side-by-side">
+        <input id="leftMscText3" placeholder="Enter left Msc Text on the 3rd line">
+        <input id="rightMscText3" placeholder="Enter right Msc Text on the 3rd line">
+        <div class="split-input">
+            <input id="beatCount" placeholder="Enter beat count">
+            <button onclick="addMeasure()">Add Measure</button>
+        </div>
+    </div>
+
+        <!-- <input type="text" placeholder="Input 1">
+        <input type="text" placeholder="Input 2">
+        <input type="text" placeholder="Input 3">
+        <input type="text" placeholder="Input 4">
+        <input type="text" placeholder="Input 5">
+        <input type="text" placeholder="Input 6">
+        <input type="text" placeholder="Input 7">
+        <input type="text" placeholder="Input 8">
+        <div class="split-input">
+            <input type="text" placeholder="Input 9">
+            <button>Click</button>
+        </div> -->
+
+
+    <!-- <div class="side-by-side">
     <input id="beatCount" placeholder="Enter beat count">
     <button onclick="addMeasure()">Add Measure</button>
+    </div> -->
+
     <textarea id="xmlPreview"></textarea>
     <div class="side-by-side">
         <input id="starPair1" placeholder="Enter first star ID e.g., 1 1 11">
