@@ -12,3 +12,163 @@ measure metadata;
 11 4 9 2 7 0 5 10 3 8 1 6
 
 Figure 4, "The Augurs of Spring", RN30, mm. 133-140
+30
+mm. 133-135
+Aggregate
+10/12_(11/12)
+Octat. I
+8/8
+
+
+m. 136
+Aggregate
+10/12_(11/12)
+Octat. II
+8/8
+
+m. 137
+Aggregate
+10/12
+Octat. I
+8/8
+
+mm. 138-140
+Aggregate
+10/12_(11/12)
+Octat. II
+8/8
+
+
+
+
+
+[
+    {
+        "beatCount": "7",
+        "braces": [],
+        "hBraces": [],
+        "offsets": [
+            {
+                "beat1": "1 3",
+                "beat2": "1 4",
+                "offsetType": "standard",
+                "ifOverride": "false"
+            }
+        ],
+        "measureDescription": {
+            "box": "30",
+            "mm": "mm. 133-135",
+            "msc": [
+                [
+                    "Aggregate",
+                    "10/12_(11/12)"
+                ],
+                [
+                    "Octat. I",
+                    "8/8"
+                ],
+                [
+                    "",
+                    ""
+                ]
+            ],
+            "beatCount": "7"
+        }
+    },
+    {
+        "beatCount": "5",
+        "braces": [],
+        "hBraces": [],
+        "offsets": [
+            {
+                "beat1": "2 3",
+                "beat2": "2 4",
+                "offsetType": "standard",
+                "ifOverride": "false"
+            }
+        ],
+        "measureDescription": {
+            "box": "",
+            "mm": "m. 136",
+            "msc": [
+                [
+                    "Aggregate",
+                    "10/12_(11/12)"
+                ],
+                [
+                    "Octat. II",
+                    "8/8"
+                ],
+                [
+                    "",
+                    ""
+                ]
+            ],
+            "beatCount": "5"
+        }
+    },
+    {
+        "beatCount": "6",
+        "braces": [],
+        "hBraces": [],
+        "offsets": [
+            {
+                "beat1": "3 3",
+                "beat2": "3 4",
+                "offsetType": "standard",
+                "ifOverride": "false"
+            }
+        ],
+        "measureDescription": {
+            "box": "",
+            "mm": "m. 137",
+            "msc": [
+                [
+                    "Aggregate",
+                    "10/12"
+                ],
+                [
+                    "Octat. I",
+                    "8/8"
+                ],
+                [
+                    "",
+                    ""
+                ]
+            ],
+            "beatCount": "6"
+        }
+    },
+    {
+        "beatCount": "8",
+        "braces": [],
+        "hBraces": [],
+        "offsets": [
+            {
+                "beat1": "4 3",
+                "beat2": "4 4",
+                "offsetType": "standard",
+                "ifOverride": "false"
+            }
+        ],
+        "measureDescription": {
+            "box": "",
+            "mm": "mm. 138-140",
+            "msc": [
+                [
+                    "Aggregate",
+                    "10/12_(11/12)"
+                ],
+                [
+                    "Octat. II",
+                    "8/8"
+                ],
+                [
+                    "",
+                    ""
+                ]
+            ],
+            "beatCount": "8"
+        }
+    }
+]
