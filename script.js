@@ -13,6 +13,11 @@ let globalVerticalBracketAdditionValue = 5;
 
 let globalStafflineIncrementX = 290;
 
+let globalStarXExpansion = 8;
+let globalStarYExpansion = 10;
+// this.xExpansion = 8;
+// this.yExpansion = 10;
+
 class SVGElementFactory {
     constructor(svgNS) {
         this.svgNS = svgNS;
